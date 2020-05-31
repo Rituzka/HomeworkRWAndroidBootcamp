@@ -1,15 +1,21 @@
 # HomeworkRWAndroidBootcamp
-###Rita Casiello
+### Rita Casiello
 
 Discorse user: TS Rita Casiello#2120
 
-###Barcelona, Spain
+### Barcelona, Spain
 ![rita](https://user-images.githubusercontent.com/37933287/83359546-237e3500-a37b-11ea-9b61-9aeab5bf2fea.jpg)
 
-##Programming experience:
-No working experience in Development but working hard to start!
+## Programming experience:
+No working experience as a Developer yet but working hard to get started shortly!
+That's my goal for this year -> to work as a developer Mobile junior :wink:
 
-##Hobbies
+## Hobbies
+* Fitness
+* sci-fi movies & series
+* Kayac excursions
+* Traveling
+
 
 
 
