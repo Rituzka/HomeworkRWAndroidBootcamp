@@ -1,5 +1,5 @@
 # HomeworkRWAndroidBootcamp
-(https://github.com/Rituzka/HomeworkRWAndroidBootcamp/Assets/rita.jpg)
+https://github.com/Rituzka/HomeworkRWAndroidBootcamp/Assets/rita.jpg
 
 Rita Casiello
 Discorse user: TS Rita Casiello#2120
