@@ -1,5 +1,8 @@
 package model.people
 
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
 class Employee(
         firstName: String,
         lastName: String,
@@ -8,23 +11,36 @@ class Employee(
         val salary: Double,
         val socialSecurityNumber: String,
         val hireDate: String
+
 ) : Person(firstName = firstName, lastName = lastName, email = email, phoneNumber = phoneNumber) {
+
+    val fullName = "$firstName $lastName"
 
     override fun toString(): String {
         return "" // TODO format the data in any way you want! :]
+
+
     }
 
-    /**
-     * Prints a time of clocking in, in a nice format.
-     *
-     * Hint: to get time, you can create a `Date` object. Use SimpleDateFormatter to format the time!
-     * */
-    fun clockIn() {
+    fun clockIn(employee: Employee) {
+
+        val current = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("EEE, MMM d, yyyy -  h:mm a")
+        val formatted = current.format(formatter)
+
+
+        println( "${employee.fullName}, clock in: $formatted")
 
     }
 
     // TODO same as above, but times for clocking out!
-    fun clockOut() {
+    fun clockOut(employee: Employee) {
+        val current = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("EEE, MMM d, yyyy -  h:mm a")
+        val formatted = current.format(formatter)
+
+        println( "${employee.fullName}, clock out: $formatted")
+
 
     }
 }
