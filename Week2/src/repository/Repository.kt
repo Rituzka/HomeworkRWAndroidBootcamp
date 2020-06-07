@@ -1,8 +1,8 @@
 package repository
 
 import model.animals.Cat
-import model.caffe.Product
-import model.caffe.Sponsorship
+import model.cafe.Product
+import model.cafe.Sponsorship
 import model.people.Employee
 import model.people.Customer
 import model.shelter.Shelter

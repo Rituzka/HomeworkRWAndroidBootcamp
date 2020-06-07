@@ -1,6 +1,6 @@
 package model.animals
 
-import model.caffe.Sponsorship
+import model.cafe.Sponsorship
 import java.util.*
 
 data class Cat(

@@ -1,7 +1,8 @@
 package helper
 import model.animals.Cat
-import model.caffe.Cafe
-import model.caffe.Product
+import model.cafe.Cafe
+import model.cafe.Product
+import model.cafe.Receipt
 import model.people.Person
 import model.shelter.Shelter
 
@@ -31,14 +32,13 @@ class CafeController {
             person.cats.add(cat)
         }
     }
+    //create receipt, add in Set of receipts and print it
+    fun sellItems(day: String, items: Map<Product, Int>, customerId: String) {
+        val ticket = Receipt("", customerId, items)
+        cafe.receiptsByDay[day]?.add(ticket)
+        
+        val receipt = cafe.getReceipt(day, customerId, items)
 
-    fun sellItems(items: List<Product>, customerId: String) {
-
-        /**
-         * Also make sure to print receipt information out & add the receipt to the list of receipts for the current day.
-         * You can random the day from a List, or check from the Date object!
-         * */
-        val receipt = cafe.getReceipt(items, customerId)
     }
 
     /**
