@@ -1,6 +1,6 @@
 package model.caffe
 
 data class Sponsorship(
-        val patronId: String,
+        val customerId: String,
         val catId: String
 )

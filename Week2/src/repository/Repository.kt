@@ -4,7 +4,7 @@ import model.animals.Cat
 import model.caffe.Product
 import model.caffe.Sponsorship
 import model.people.Employee
-import model.people.Patron
+import model.people.Customer
 import model.shelter.Shelter
 
 class Repository {
@@ -13,11 +13,11 @@ class Repository {
     val sponsorship1 = mutableSetOf<Sponsorship>()
 
     //Employees
-    val robb = Employee("Robb", "Skywalker","robb@gmail.com", "1938279192",
+    val robb = Employee("","Robb", "Skywalker","robb@gmail.com", "1938279192",
             2345.20,"078-05-1120","05-23-2019")
-    val arya = Employee("Arya", "Parker","arya@gmail.com", "3038279192",
+    val arya = Employee("","Arya", "Parker","arya@gmail.com", "3038279192",
             2435.20,"080-05-3120","12-17-2018")
-    val peter = Employee("Peter", "Strange","peter@gmail.com", "4338279192",
+    val peter = Employee("","Peter", "Strange","peter@gmail.com", "4338279192",
             2245.20,"120-05-5120","01-25-2020")
 
     //Cats
@@ -37,13 +37,13 @@ class Repository {
     val shelter2 = Shelter(249, "Andrea's Playful Kittens")
 
     //Patrons
-    val patron1 = Patron("", "Natasha", "Romanoff","natasha@gmail.com",
+    val patron1 = Customer("", "Natasha", "Romanoff","natasha@gmail.com",
             "927393847")
-    val patron2 = Patron("", "Steve", "Rogers","capi@gmail.com",
+    val patron2 = Customer("", "Steve", "Rogers","capi@gmail.com",
             "123393847")
-    val patron3 = Patron("", "Tony", "Stark","ironTony@gmail.com",
+    val patron3 = Customer("", "Tony", "Stark","ironTony@gmail.com",
             "435393847")
-    val patron4 = Patron("", "Peter", "Parker","spider@gmail.com",
+    val patron4 = Customer("", "Peter", "Parker","spider@gmail.com",
             "739393847")
 
     // Products

@@ -6,14 +6,11 @@ import model.people.Person
 
 class Cafe {
 
+    private val employees = mutableSetOf<Employee>()
+    private val customers = mutableSetOf<Person>()
+    private val sponsorships = mutableSetOf<Sponsorship>()
 
-    // cafe related stuff
-
-    /**
-     * To simplify it, let's imitate a week-long cafe turnaround.
-     *
-     * Make sure to add your receipts to each set, with your data.
-     * */
+    //To simplify it, let's imitate a week-long cafe turnaround.
     private val receiptsByDay = mutableMapOf(
             "Monday" to mutableSetOf<Receipt>(),
             "Tuesday" to mutableSetOf<Receipt>(),
@@ -24,53 +21,46 @@ class Cafe {
             "Sunday" to mutableSetOf<Receipt>()
     )
 
-    // maybe as employees check in, you can add them to the list of working employees!
-    private val employees = mutableSetOf<Employee>()
-    private val patrons = mutableSetOf<Person>()
-
-    // make sure to add sponsorships and tie them to people!
-    private val sponsorships = mutableSetOf<Sponsorship>()
-
-    // TODO Add logic for checking in and checking out!
+    //add to list employee if check in
     fun checkInEmployee(employee: Employee) {
      employee.clockIn(employee)
         employees.add(employee)
     }
 
+    //remove from list employee if check out
     fun checkOutEmployee(employee: Employee) {
          employee.clockOut(employee)
          employees.remove(employee)
     }
 
     fun showNumberOfReceiptsForDay(day: String) {
-        val errorDay = "Wrong day inserted"
-        val receiptForDay = receiptsByDay[day] ?: errorDay
+        val receiptDay = receiptsByDay[day]
+        val noTickets = ("No transactions today? Something has to be wrong!").also {
+            receiptDay?: println(it)
+        }
+        println("On $day you made ${receiptsByDay[day]?.size} transactions!")
 
-        println("On $day you made ${receiptsByDay.size} transactions!")
     }
-
-    fun getReceipt(items: List<Product>, patronId: String): Receipt {
-        // TODO return a receipt! Also make sure to check if customer is also an employee
-        return Receipt()
-    }
-
-    fun addSponsorship(catId: String, patronId: String) {
-        // TODO add the sponsorship
+    //add sponsor object to set Sponsorship
+    fun addSponsorship(customerId: String, catId: String) {
+        val sponsor = Sponsorship(customerId, catId)
+        sponsorships.add(sponsor)
 
     }
 
     fun getWorkingEmployees(): Set<Employee> = employees
 
-    fun getTotalPatrons(day: String):Int{
+    fun getTotalCustomers(day: String){
         val receiptDay = receiptsByDay[day]
-        val patron = mutableSetOf<String>()
+        var totalCustomers = 0
 
-        if (receiptDay != null) {
-            receiptDay.forEach {
-             patron.add(it.id)
-            }
+        //an iteration on Set<Receipt> to count customers of the day
+        if (receiptDay != null) for ( receipt in receiptDay){
+            totalCustomers = receipt.customerId.count()
         }
-        return patrons.size
+
+        println("On $day, the total numbers of customers was: $totalCustomers")
+
     }
 
     fun getAdoptedCats(): Set<Cat> {
@@ -91,6 +81,6 @@ class Cafe {
     }
 
     fun getAdopters(): List<Person> {
-        return (employees + patrons).filter { it.cats.isNotEmpty() }
+        return (employees + customers).filter { it.cats.isNotEmpty() }
     }
 }

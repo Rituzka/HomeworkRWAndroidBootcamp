@@ -4,6 +4,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class Employee(
+        id:String,
         firstName: String,
         lastName: String,
         email: String,
@@ -12,13 +13,11 @@ class Employee(
         val socialSecurityNumber: String,
         val hireDate: String
 
-) : Person(firstName = firstName, lastName = lastName, email = email, phoneNumber = phoneNumber) {
-
+) : Person(id = id, firstName = firstName, lastName = lastName, email = email, phoneNumber = phoneNumber) {
 
 
     override fun toString(): String {
         return "" // TODO format the data in any way you want! :]
-
 
     }
 
@@ -40,7 +39,6 @@ class Employee(
         val formatted = current.format(formatter)
 
         println( "${employee.fullName}, clock out: $formatted")
-
 
     }
 }
