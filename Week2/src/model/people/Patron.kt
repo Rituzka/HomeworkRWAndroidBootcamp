@@ -3,7 +3,7 @@ package model.people
 import java.util.*
 
 class Patron(
-        val patronId: String = UUID.randomUUID().toString(),
+        patronId: String = UUID.randomUUID().toString(),
         firstName: String,
         lastName: String,
         email: String,

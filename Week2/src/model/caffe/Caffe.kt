@@ -26,37 +26,52 @@ class Cafe {
 
     // maybe as employees check in, you can add them to the list of working employees!
     private val employees = mutableSetOf<Employee>()
-    private val customers = mutableSetOf<Person>()
+    private val patrons = mutableSetOf<Person>()
 
     // make sure to add sponsorships and tie them to people!
     private val sponsorships = mutableSetOf<Sponsorship>()
 
     // TODO Add logic for checking in and checking out!
     fun checkInEmployee(employee: Employee) {
-
+     employee.clockIn(employee)
+        employees.add(employee)
     }
 
     fun checkOutEmployee(employee: Employee) {
-
+         employee.clockOut(employee)
+         employees.remove(employee)
     }
 
     fun showNumberOfReceiptsForDay(day: String) {
-        val receiptForDay = receiptsByDay[day] ?: return // wrong day inserted!
+        val errorDay = "Wrong day inserted"
+        val receiptForDay = receiptsByDay[day] ?: errorDay
 
         println("On $day you made ${receiptsByDay.size} transactions!")
     }
 
-    fun getReceipt(items: List<Product>, customerId: String): Receipt {
+    fun getReceipt(items: List<Product>, patronId: String): Receipt {
         // TODO return a receipt! Also make sure to check if customer is also an employee
-
         return Receipt()
     }
 
-    fun addSponsorship(catId: String, personId: String) {
+    fun addSponsorship(catId: String, patronId: String) {
         // TODO add the sponsorship
+
     }
 
     fun getWorkingEmployees(): Set<Employee> = employees
+
+    fun getTotalPatrons(day: String):Int{
+        val receiptDay = receiptsByDay[day]
+        val patron = mutableSetOf<String>()
+
+        if (receiptDay != null) {
+            receiptDay.forEach {
+             patron.add(it.id)
+            }
+        }
+        return patrons.size
+    }
 
     fun getAdoptedCats(): Set<Cat> {
         return emptySet()
@@ -76,6 +91,6 @@ class Cafe {
     }
 
     fun getAdopters(): List<Person> {
-        return (employees + customers).filter { it.cats.isNotEmpty() }
+        return (employees + patrons).filter { it.cats.isNotEmpty() }
     }
 }

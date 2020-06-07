@@ -43,15 +43,15 @@ class Repository {
             "123393847")
     val patron3 = Patron("", "Tony", "Stark","ironTony@gmail.com",
             "435393847")
-    val patron4 = Patron("", "Clint", "Barton","hawk@gmail.com",
+    val patron4 = Patron("", "Peter", "Parker","spider@gmail.com",
             "739393847")
 
     // Products
-    val coffeOrganic = Product("", 2.10)
-    val orangeJuice = Product("", 3.50)
-    val muffins = Product("", 1.90)
-    val cakeVegan = Product("", 4.90)
-    val soda = Product("", 1.80)
+    val coffeOrganic = Product(23, 2.10)
+    val orangeJuice = Product(34, 3.50)
+    val muffins = Product(56, 1.90)
+    val cakeVegan = Product(67, 4.90)
+    val soda = Product(12, 1.80)
 
 
 

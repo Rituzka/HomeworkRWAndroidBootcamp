@@ -14,7 +14,7 @@ class Employee(
 
 ) : Person(firstName = firstName, lastName = lastName, email = email, phoneNumber = phoneNumber) {
 
-    val fullName = "$firstName $lastName"
+
 
     override fun toString(): String {
         return "" // TODO format the data in any way you want! :]

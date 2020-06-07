@@ -11,5 +11,7 @@ open class Person(
         val phoneNumber: String,
         val email: String,
         val cats: MutableSet<Cat> = mutableSetOf() // every person can adopt cats, and as many as they want!
-)
+) {
 
+    val fullName = "$firstName $lastName"
+}
