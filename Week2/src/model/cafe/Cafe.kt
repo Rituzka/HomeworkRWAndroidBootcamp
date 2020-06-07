@@ -8,7 +8,7 @@ class Cafe {
 
     private val employees = mutableSetOf<Employee>()
     private val customers = mutableSetOf<Person>()
-    private val sponsorships = mutableSetOf<Sponsorship>()
+    val sponsorships = mutableSetOf<Sponsorship>()
 
     //To simplify it, let's imitate a week-long cafe turnaround(map of day and set of Receipt)
     val receiptsByDay = mutableMapOf(

@@ -3,6 +3,7 @@ package model.people
 import java.util.*
 
 class Customer(
+
         id:String,
         firstName: String,
         lastName: String,
