@@ -1,6 +1,8 @@
 package model.shelter
 
-// TODO add remaining data
+import model.animals.Cat
+
+
 data class Shelter(
         val id: Int,
         val name: String

@@ -8,19 +8,18 @@ import model.shelter.Shelter
 
 class CafeController {
 
-    // cafe related things
     private val cafe = Cafe()
+    val shelterToCat = mutableMapOf<Shelter, MutableSet<Cat>>()
+    val shelter = mutableSetOf<Shelter>()
+    val shelter1Cats = mutableSetOf<Cat>()
+    val shelter2Cats = mutableSetOf<Cat>()
 
-    // shelter related things // TODO make sure to fill in the data!
-    private val shelters = mutableSetOf<Shelter>()
-    private val shelterToCat = mutableMapOf<Shelter, MutableSet<Cat>>()
 
     fun adoptCat(catId: String, person: Person) {
         // check if cats exist, and retrieve its entry!
         val catInShelter = shelterToCat.entries.firstOrNull { (_, catsInShelter) ->
             catsInShelter.any { it.id == catId }
         }
-
         // you can adopt that cat!
         if (catInShelter != null) {
             val cat = catInShelter.value.first { cat -> cat.id == catId } // find the cat for that ID again
@@ -30,24 +29,23 @@ class CafeController {
 
             // add the cat to the person
             person.cats.add(cat)
+            println("Identity of Cat adopted: ${cat.name} , from shelter ${catInShelter.key.name}, customer" +
+                    " ${person.fullName} is the lucky one. Congratulations family!!")
         }
     }
-
     //create receipt, add in Set of receipts and print it
-    fun sellItems(day: String, item:Product, quantity:Int,customerId: String) {
+    fun sellItems(day: String, id: String, customerId: String, item: Product, quantity: Int) {
         val items = mutableMapOf<Product, Int>()
-        items.put(item,quantity)
-        val ticket = Receipt("",customerId,items)
+        items.put(item, quantity)
+
+        //add ticket in setReceipts
+        val ticket = Receipt(id, customerId, items)
         Cafe.receiptsByDay[day]?.add(ticket)
 
-        val receipt = cafe.getReceipt(day, customerId, )
+        cafe.getReceipt(day, customerId, items)
 
     }
-
-    /**
-     * First gets a list of all adopters, then queries shelters.
-     *
-     * */
+    
     fun getNumberOfAdoptionsPerShelter(): Map<String, Int> {
         val allAdopters = cafe.getAdopters()
 

@@ -54,15 +54,12 @@ class Cafe {
     fun getWorkingEmployees(): Set<Employee> = employees
 
     fun getTotalCustomers(day: String) {
-        val receiptDay = receiptsByDay[day]
-        var totalCustomers = 0
-
-        //an iteration on Set<Receipt> to count customers of the day
-        if (receiptDay != null) for (receipt in receiptDay) {
-            totalCustomers = receipt.customerId.count()
+        val receiptDay = receiptsByDay.get(day)
+        var customersDay = 0
+        for(it in receiptDay!!) {
+          customersDay =  it.customerId.count()
         }
-
-        println("On $day, the total numbers of customers was: $totalCustomers")
+        println("On $day, the total numbers of customers was: $customersDay")
 
     }
 
@@ -98,8 +95,10 @@ class Cafe {
 
         val receipt = receiptDay?.find { it.customerId == customerId && it.items == items }
 
-        println("Receipt description:\t CustomerId: ${receipt?.customerId} \t Purchase: \t ${receipt?.items?.keys}\t " +
-                "Thank You & come back soon!!")
+        println("Receipt nº ${receipt?.id}   CustomerId: ${receipt?.customerId} \t ITEMS ${receipt?.items?.keys}\t " +
+                " Total = $ ${receipt?.totalReceipt} \t Thank You & come back soon!!")
+
+
     }
 
 }

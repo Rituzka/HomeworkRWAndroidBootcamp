@@ -1,6 +1,7 @@
 package model.animals
 
 import model.cafe.Sponsorship
+import model.shelter.Shelter
 import java.util.*
 
 data class Cat(
@@ -12,4 +13,5 @@ data class Cat(
         val shelterId: Int
        // val sponsorships: MutableSet<Sponsorship> = mutableSetOf()
 )
+
 
