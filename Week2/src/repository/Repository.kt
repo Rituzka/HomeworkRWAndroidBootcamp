@@ -1,7 +1,6 @@
 package repository
 
 import model.animals.Cat
-import model.cafe.Cafe
 import model.cafe.Product
 import model.cafe.Sponsorship
 import model.people.Employee
@@ -10,6 +9,7 @@ import model.shelter.Shelter
 
 object Repository {
 
+    //cat sponsors
     val sponsor1 = Sponsorship("201A", "500C")
     val sponsor2 = Sponsorship("202A", "502C")
     val sponsor3 = Sponsorship("203A","502C")
@@ -23,18 +23,15 @@ object Repository {
             2435.20,"080-05-3120","12-17-2018")
     val peter = Employee("125B","Peter", "Strange","peter@gmail.com", "4338279192",
             2245.20,"120-05-5120","01-25-2020")
-    val nat = Employee("126C", "Natasha", "Romanoff", "natasha@gmail.com","927393847")
+    val nat = Employee("126C", "Natasha", "Romanoff", "natasha@gmail.com","927393847", 2323.70,
+    "121.07.3454","05-12-1993")
 
     //Cats
-    val morris = Cat("500C","Morris", "Tabby tomcat", 'm',242, "" )
-    val orangey = Cat("501C","Orangey", "Toyger", 'm',242,
-            sponsorship)
-    val lewis = Cat("502C","Lewis Carrol", "Cheshire", 'f',249,
-            sponsorship)
-    val choppy = Cat("503C","Chouppette", "Birman", 'f',249,
-            sponsorship)
-    val tobby = Cat("504C","Tobby", "Marmalade Tabby", 'm',242,
-            sponsorship)
+    val morris = Cat("500C","Morris", "Tabby tomcat", 'm',242 )
+    val orangey = Cat("501C","Orangey", "Toyger", 'm',242)
+    val lewis = Cat("502C","Lewis Carrol", "Cheshire", 'f',249)
+    val choppy = Cat("503C","Chouppette", "Birman", 'f',249)
+    val tobby = Cat("504C","Tobby", "Marmalade Tabby", 'm',242)
 
     //Shelters
     val shelter1 = Shelter(242, "Sam's Shameless Furballs")

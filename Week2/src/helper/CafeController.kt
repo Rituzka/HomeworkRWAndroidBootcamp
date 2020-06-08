@@ -32,12 +32,15 @@ class CafeController {
             person.cats.add(cat)
         }
     }
+
     //create receipt, add in Set of receipts and print it
-    fun sellItems(day: String, items: Map<Product, Int>, customerId: String) {
-        val ticket = Receipt("", customerId, items)
-        cafe.receiptsByDay[day]?.add(ticket)
-        
-        val receipt = cafe.getReceipt(day, customerId, items)
+    fun sellItems(day: String, item:Product, quantity:Int,customerId: String) {
+        val items = mutableMapOf<Product, Int>()
+        items.put(item,quantity)
+        val ticket = Receipt("",customerId,items)
+        Cafe.receiptsByDay[day]?.add(ticket)
+
+        val receipt = cafe.getReceipt(day, customerId, )
 
     }
 
@@ -51,7 +54,12 @@ class CafeController {
         return emptyMap() // TODO find which cats belong to which shelter, and create a map of Shelter name to number of adoptions
     }
 
+    //cats still in shelter
     fun getUnadoptedCats(): Set<Cat> {
-        return emptySet()
+        val setCats = mutableSetOf<Cat>()
+        for (value in shelterToCat.values) {
+            setCats.addAll(value)
+        }
+        return setCats
     }
 }

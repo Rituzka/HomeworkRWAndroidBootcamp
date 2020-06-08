@@ -1,33 +1,35 @@
 package model.cafe
 
 import model.animals.Cat
+import model.people.Customer
 import model.people.Employee
 import model.people.Person
 
 class Cafe {
+    companion object {
+        val employees = mutableSetOf<Employee>()
+        val customers = mutableSetOf<Person>()
+        val sponsorships = mutableSetOf<Sponsorship>()
 
-    private val employees = mutableSetOf<Employee>()
-    private val customers = mutableSetOf<Person>()
-    val sponsorships = mutableSetOf<Sponsorship>()
+        //To simplify it, let's imitate a week-long cafe turnaround(map of day and set of Receipt)
+        val receiptsByDay = mutableMapOf(
+                "Monday" to Receipt.receiptSet,
+                "Tuesday" to Receipt.receiptSet,
+                "Wednesday" to Receipt.receiptSet,
+                "Thursday" to Receipt.receiptSet,
+                "Friday" to Receipt.receiptSet,
+                "Saturday" to Receipt.receiptSet,
+                "Sunday" to Receipt.receiptSet
+        )
+    }
 
-    //To simplify it, let's imitate a week-long cafe turnaround(map of day and set of Receipt)
-    val receiptsByDay = mutableMapOf(
-            "Monday" to Receipt.receiptSet,
-            "Tuesday" to Receipt.receiptSet,
-            "Wednesday" to Receipt.receiptSet,
-            "Thursday" to Receipt.receiptSet,
-            "Friday" to Receipt.receiptSet,
-            "Saturday" to Receipt.receiptSet,
-            "Sunday" to Receipt.receiptSet
-    )
-
-    //add to list employee if check in
+    //added to list employee if check in
     fun checkInEmployee(employee: Employee) {
         employee.clockIn(employee)
         employees.add(employee)
     }
 
-    //remove from list employee if check out
+    //removed from list employee if check out
     fun checkOutEmployee(employee: Employee) {
         employee.clockOut(employee)
         employees.remove(employee)
@@ -65,7 +67,9 @@ class Cafe {
     }
 
     fun getTotalCustomersNonEmployees(day: String) {
-
+      val toPrint = customers.filter { it is Employee }
+        toPrint.size
+        println("On day $day, total customers = $customers.size, non employees = $toPrint")
     }
 
     fun getAdoptedCats(): Set<Cat> {
@@ -89,10 +93,10 @@ class Cafe {
         return (employees + customers).filter { it.cats.isNotEmpty() }
     }
 
-    fun getReceipt(day: String, customerId: String, items: Map<Product, Int>){
-        val receiptDay= receiptsByDay[day]
+    fun getReceipt(day: String, customerId: String, items: Map<Product, Int>) {
+        val receiptDay = receiptsByDay[day]
 
-        val receipt = receiptDay?.find { it.customerId == customerId && it.items == items}
+        val receipt = receiptDay?.find { it.customerId == customerId && it.items == items }
 
         println("Receipt description:\t CustomerId: ${receipt?.customerId} \t Purchase: \t ${receipt?.items?.keys}\t " +
                 "Thank You & come back soon!!")

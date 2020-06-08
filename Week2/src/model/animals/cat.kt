@@ -9,7 +9,7 @@ data class Cat(
         val name: String,
         val breed: String,
         val gender: Char,
-        val shelterId: Int,
-        val sponsorships: MutableSet<Sponsorship> = mutableSetOf()
+        val shelterId: Int
+       // val sponsorships: MutableSet<Sponsorship> = mutableSetOf()
 )
 
