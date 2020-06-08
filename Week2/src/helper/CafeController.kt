@@ -5,6 +5,7 @@ import model.cafe.Product
 import model.cafe.Receipt
 import model.people.Person
 import model.shelter.Shelter
+import repository.Repository
 
 class CafeController {
 
@@ -13,6 +14,7 @@ class CafeController {
     val shelter = mutableSetOf<Shelter>()
     val shelter1Cats = mutableSetOf<Cat>()
     val shelter2Cats = mutableSetOf<Cat>()
+    val catsAdopted = mutableSetOf<Cat>()
 
 
     fun adoptCat(catId: String, person: Person) {
@@ -29,6 +31,8 @@ class CafeController {
 
             // add the cat to the person
             person.cats.add(cat)
+            catsAdopted.add(cat)
+
             println("Identity of Cat adopted: ${cat.name} , from shelter ${catInShelter.key.name}, customer" +
                     " ${person.fullName} is the lucky one. Congratulations family!!")
         }
@@ -45,11 +49,21 @@ class CafeController {
         cafe.getReceipt(day, customerId, items)
 
     }
-    
+
     fun getNumberOfAdoptionsPerShelter(): Map<String, Int> {
         val allAdopters = cafe.getAdopters()
+        val adoptionsPerShelter = mutableMapOf<String,Int>()
+        var total:Int = 0
+        val size = adoptionsPerShelter.size
+              catsAdopted.forEach {
+                 if(it.shelterId == 242) {
+                     total += 1
+                     adoptionsPerShelter.put(Repository.shelter1.name, total)
+                 }else
+                     adoptionsPerShelter.put(Repository.shelter2.name,(size-total))
+              }
 
-        return emptyMap() // TODO find which cats belong to which shelter, and create a map of Shelter name to number of adoptions
+        return adoptionsPerShelter
     }
 
     //cats still in shelter

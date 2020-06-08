@@ -21,6 +21,8 @@ fun main () {
     cafe.checkOutEmployee(Repository.robb)
     println("")
 
+
+
     // ** ITEMS **
 
     //sell items demo
@@ -35,6 +37,9 @@ fun main () {
     //get total customers today
     cafe.getTotalCustomers("Monday")
     println("")
+
+    //nonEmployees
+    cafe.getTotalCustomersNonEmployees("Monday")
 
     // ** CATS **
 
@@ -57,6 +62,23 @@ fun main () {
 
     //adopt a cat, remove from shelter list, add to the happy customer
     cafeController.adoptCat(Repository.lewis.id, Repository.customer4)
+    cafeController.adoptCat(Repository.orangey.id, Repository.arya)
     println("")
+
+    //customers who sponsored a cat
+    cafe.addSponsorship(Repository.customer3.id, Repository.choppy.id)
+    cafe.addSponsorship(Repository.customer1.id, Repository.morris.id)
+
+    //list of adopted cats
+    cafe.getAdoptedCats()
+    println("")
+
+    //number of adoptions per shelter
+  println ("${cafeController.getNumberOfAdoptionsPerShelter()}")
+    println("")
+
+   // get list unadopted cats
+    println("${cafeController.getUnadoptedCats()}")
+
 
 }

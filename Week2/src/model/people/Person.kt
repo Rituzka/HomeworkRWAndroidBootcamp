@@ -1,8 +1,11 @@
 package model.people
 
+import helper.CafeController
 import model.animals.Cat
 import model.cafe.Sponsorship
 import java.util.*
+import kotlin.properties.Delegates
+import kotlin.reflect.KProperty
 
 open class Person(
 
@@ -12,10 +15,14 @@ open class Person(
         val phoneNumber: String,
         val email: String,
         val cats: MutableSet<Cat> = mutableSetOf()
-        // every person can adopt cats, and as many as they want!
 
 ) {
+    val cafeController = CafeController()
 
+    var isAdopted: Boolean by Delegates.observable(false){
+        _kProperty: KProperty<*>, old: Boolean, new: Boolean ->
+
+    }
 
     val fullName = "$firstName $lastName"
 }

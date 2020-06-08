@@ -1,5 +1,6 @@
 package model.cafe
 
+import helper.CafeController
 import model.animals.Cat
 import model.people.Customer
 import model.people.Employee
@@ -21,6 +22,7 @@ class Cafe {
                 "Saturday" to Receipt.receiptSet,
                 "Sunday" to Receipt.receiptSet
         )
+        val cafeController = CafeController()
     }
 
     //added to list employee if check in
@@ -37,7 +39,7 @@ class Cafe {
 
     fun showNumberOfReceiptsForDay(day: String) {
         val receiptDay = receiptsByDay[day]
-        val noTickets = ("No transactions today? Something has to be wrong!").also {
+        ("No transactions today? Something has to be wrong!").also {
             receiptDay ?: println(it)
         }
         println("On $day you made ${receiptsByDay[day]?.size} transactions!")
@@ -50,8 +52,6 @@ class Cafe {
         sponsorships.add(sponsor)
 
     }
-
-    fun getWorkingEmployees(): Set<Employee> = employees
 
     fun getTotalCustomers(day: String) {
         val receiptDay = receiptsByDay.get(day)
@@ -69,13 +69,16 @@ class Cafe {
         println("On day $day, total customers = $customers.size, non employees = $toPrint")
     }
 
-    fun getAdoptedCats(): Set<Cat> {
-        return emptySet()
+    fun getAdoptedCats() {
+            println("Cats Adopted:")
+        cafeController.catsAdopted.forEach {
+            println(it.name)
+        }
     }
 
-
     fun getSponsoredCats(): Set<Cat> {
-        return emptySet()
+       return emptySet()
+
     }
 
     fun getMostPopularCats(): Set<Cat> {
