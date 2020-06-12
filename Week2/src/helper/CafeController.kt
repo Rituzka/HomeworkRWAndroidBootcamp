@@ -51,7 +51,6 @@ class CafeController {
     }
 
     fun getNumberOfAdoptionsPerShelter(): Map<String, Int> {
-        val allAdopters = cafe.getAdopters()
         val adoptionsPerShelter = mutableMapOf<String,Int>()
         var total:Int = 0
         val size = adoptionsPerShelter.size

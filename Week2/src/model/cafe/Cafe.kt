@@ -10,7 +10,7 @@ class Cafe {
     companion object {
         val employees = mutableSetOf<Employee>()
         val customers = mutableSetOf<Person>()
-        val sponsorships = mutableSetOf<Sponsorship>()
+
 
         //To simplify it, let's imitate a week-long cafe turnaround(map of day and set of Receipt)
         val receiptsByDay = mutableMapOf(
@@ -49,7 +49,7 @@ class Cafe {
     //add sponsor object to set Sponsorship
     fun addSponsorship(customerId: String, catId: String) {
         val sponsor = Sponsorship(customerId, catId)
-        sponsorships.add(sponsor)
+       Sponsorship.sponsorCats.add(sponsor)
 
     }
 
