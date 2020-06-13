@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/logoAndroid"
         android:layout_width="127dp"
         android:layout_height="84dp"
         android:layout_marginStart="16dp"
@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/androidlogo" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/logoText"
         android:layout_width="284dp"
         android:layout_height="37dp"
         android:layout_marginStart="14dp"
@@ -33,7 +33,7 @@
         app:srcCompat="@drawable/logotext" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/lblAlways"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
@@ -46,7 +46,7 @@
         android:textSize="36sp"
         android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/logoText" />
 
     <Button
         android:id="@+id/btnJoinUs"
@@ -58,7 +58,7 @@
         android:text="@string/joinUs"
         android:textColor="@android:color/background_light"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/lblAlways" />
 
     <TextView
         android:id="@+id/lblName"
