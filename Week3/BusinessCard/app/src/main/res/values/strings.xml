@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BusinessCard</string>
+    <string name="androidLogo">Android Skating logo</string>
+    <string name="alwaysInMotion">Always in Motion</string>
+    <string name="logoText">Logo texto Android</string>
+    <string name="joinUs">Join us!</string>
 </resources>
