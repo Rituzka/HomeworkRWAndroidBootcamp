@@ -66,7 +66,6 @@
         android:fontFamily="sans-serif-condensed"
         android:gravity="center_vertical"
         android:text="@string/ritaCasiello"
-        android:textAlignment="textStart"
         android:textColor="#AE9915"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -98,4 +97,4 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>  tools:layout_editor_absoluteY="654dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
