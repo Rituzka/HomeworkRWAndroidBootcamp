@@ -14,17 +14,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         btnJoinUs.setOnClickListener {
+
             val animation = AnimationUtils.loadAnimation(this, R.anim.rotate)
             logoAndroid.startAnimation(animation)
 
             val animation2 = AnimationUtils.loadAnimation(this, R.anim.zoom_in)
-            logoText.startAnimation(animation2)
+            lblAlways.startAnimation(animation2)
 
             val animation3 = AnimationUtils.loadAnimation(this, R.anim.zoom_out)
-            logoText.startAnimation(animation3)
+            lblName.startAnimation(animation3)
 
         }
-
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         super.onCreateOptionsMenu(menu)

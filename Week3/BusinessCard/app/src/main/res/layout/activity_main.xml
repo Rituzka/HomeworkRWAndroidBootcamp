@@ -7,92 +7,87 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/btnJoinUs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/joinUs"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintEnd_toEndOf="@+id/lblAlways"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="@+id/lblAlways"
+        app:layout_constraintTop_toBottomOf="@+id/lblAlways" />
+
+    <ImageView
+        android:id="@+id/logoText"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/logoText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/logoAndroid"
+        app:layout_constraintTop_toBottomOf="@+id/logoAndroid"
+        app:srcCompat="@drawable/logotext" />
+
     <ImageView
         android:id="@+id/logoAndroid"
         android:layout_width="127dp"
         android:layout_height="84dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:contentDescription="@string/androidLogo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/androidlogo" />
 
-    <ImageView
-        android:id="@+id/logoText"
-        android:layout_width="284dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="113dp"
-        android:contentDescription="@string/logoText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logotext" />
-
     <TextView
         android:id="@+id/lblAlways"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="134dp"
         android:fontFamily="cursive"
-        android:gravity="center_horizontal|center_vertical"
+        android:gravity="center"
         android:text="@string/alwaysInMotion"
         android:textColor="#201F1F"
         android:textDirection="firstStrongLtr"
         android:textSize="36sp"
         android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.592"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoText" />
-
-    <Button
-        android:id="@+id/btnJoinUs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="23dp"
-        android:background="@color/colorPrimaryDark"
-        android:text="@string/joinUs"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblAlways" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/lblName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:fontFamily="sans-serif-condensed"
-        android:gravity="center_vertical"
         android:text="@string/ritaCasiello"
         android:textColor="#AE9915"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/lblLocation"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/lblLocation" />
 
     <TextView
         android:id="@+id/lblLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:gravity="center_vertical"
         android:text="@string/barcelona"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/lblMail"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/lblMail" />
 
     <TextView
         android:id="@+id/lblMail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="51dp"
-        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp"
         android:text="@string/mail"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
