@@ -8,4 +8,10 @@
         android:title="@string/call"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/actionShare"
+        android:icon="@android:drawable/ic_menu_share"
+        android:title="@string/share_image"
+        app:showAsAction="ifRoom" />
+
 </menu>
