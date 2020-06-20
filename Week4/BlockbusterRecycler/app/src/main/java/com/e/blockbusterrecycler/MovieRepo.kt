@@ -9,8 +9,8 @@ object MovieRepo {
             "10/26/1984",
             "The Terminator",
             R.string.summaryTerminator,
-            R.drawable.main_terminatordetail,
-            R.drawable.terminatordetail,
+            R.drawable.main_terminator,
+            R.drawable.terminator_detail,
             "James Cameron",
             R.string.starsTerminator
         ),
@@ -20,7 +20,7 @@ object MovieRepo {
             "Game of Thrones",
             R.string.summaryGoT,
             R.drawable.main_gamethrones,
-            R.drawable.gamedetail,
+            R.drawable.game_detail,
             "David Benioff",
             R.string.starsGoT
         ),
@@ -29,8 +29,8 @@ object MovieRepo {
             "2016 - 2020",
             "Stranger Things",
             R.string.summaryStranger,
-            R.drawable.main_strangerdetail2,
-            R.drawable.strangerdetails,
+            R.drawable.main_stranger,
+            R.drawable.stranger_detail,
             "Matt Duffer, Ross Duffer",
             R.string.starsStrangerThings
         ),
@@ -40,7 +40,7 @@ object MovieRepo {
             "Back to the Future",
             R.string.summaryBackFuture,
             R.drawable.main_backfuture,
-            R.drawable.backdetail,
+            R.drawable.back_detail,
             "Robert Zemeckis",
             R.string.starsBackFuture
         ),
@@ -49,8 +49,8 @@ object MovieRepo {
             "12/17/2003",
             "The Return of The King",
             R.string.summaryReturnKing,
-            R.drawable.main_returnKing,
-            R.drawable.returnkingdetail,
+            R.drawable.main_returnking,
+            R.drawable.returnking_detail,
             "Peter Jackson",
             R.string.starsReturnKing
         ),
@@ -60,7 +60,7 @@ object MovieRepo {
             "The Empire Strikes back",
             R.string.summaryEmpire,
             R.drawable.main_empirestrikes,
-            R.drawable.empiredetail,
+            R.drawable.empire_detail,
             "Irvin Kershner",
             R.string.starsEmpire
         ),
@@ -69,8 +69,8 @@ object MovieRepo {
             "04/04/2012",
             "The Avengers",
             R.string.summaryAvengers,
-            R.drawable.main_Avengers,
-            R.drawable.avengersdetail,
+            R.drawable.main_avengers,
+            R.drawable.avengers_detail,
             "Joss Whedon",
             R.string.starsAvengers
         ),
@@ -80,7 +80,7 @@ object MovieRepo {
             "Captain America the First Avenger",
             R.string.summaryCaptain,
             R.drawable.main_captain,
-            R.drawable.captaindetail,
+            R.drawable.captain_detail,
             "Joe Johnstone",
             R.string.starsCaptain
         ),
@@ -90,7 +90,7 @@ object MovieRepo {
             "Wonder Woman",
             R.string.summaryWonder,
             R.drawable.main_wonderwoman,
-            R.drawable.wonderdetail,
+            R.drawable.wonder_detail,
             "Patty Jenkins",
             R.string.starsWonder
         ),
@@ -99,8 +99,8 @@ object MovieRepo {
             "05/23/1984",
             "Indiana Jones and The Temple of Doom",
             R.string.summaryIndy,
-            R.drawable.main_indyJones,
-            R.drawable.indydetail,
+            R.drawable.main_indy,
+            R.drawable.indy_detail,
             "Steven Spielberg",
             R.string.starsIndy
         )
