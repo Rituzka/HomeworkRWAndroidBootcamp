@@ -5,7 +5,7 @@ data class ModelMovies (
     val releaseDate: String,
     val title: String,
     val summary: String,
-    val poster:String,
-    val detail:String
+    val poster:Int,
+    val detail:Int
 )
 

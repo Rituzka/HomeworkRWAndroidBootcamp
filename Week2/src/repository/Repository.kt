@@ -9,8 +9,6 @@ import model.shelter.Shelter
 
 object Repository {
 
-
-
     //cat sponsors
     val sponsor1 = Sponsorship("201A", "500C")
     val sponsor2 = Sponsorship("202A", "502C")

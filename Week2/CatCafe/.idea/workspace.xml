@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce6e1a7e-eb02-47be-84ca-5d3f00caf727" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CatCafe.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week4/BlockbusterRecycler/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Week4/BlockbusterRecycler/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Week4/BlockbusterRecycler/app/src/main/java/com/e/blockbusterrecycler/ModelMovies.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Week4/BlockbusterRecycler/app/src/main/java/com/e/blockbusterrecycler/ModelMovies.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +22,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
