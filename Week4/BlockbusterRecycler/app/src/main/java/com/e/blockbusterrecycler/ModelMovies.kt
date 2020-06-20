@@ -6,6 +6,8 @@ data class ModelMovies (
     val title: String,
     val summary: Int,
     val poster:Int,
-    val detail:Int
+    val detail:Int,
+    val director: String,
+    val stars: Int
 )
 
