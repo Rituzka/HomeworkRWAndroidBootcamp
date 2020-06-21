@@ -1,14 +1,13 @@
 package com.e.blockbusterrecycler
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 
 class MovieListAdapter(
-   private val movies: List<ModelMovies>,
-   val clickListener: MovieItemClicked
+    private val movies: List<ModelMovies>,
+    private val clickListener: MovieItemClicked
 ): RecyclerView.Adapter<MovieListViewHolder>() {
 
     interface MovieItemClicked {

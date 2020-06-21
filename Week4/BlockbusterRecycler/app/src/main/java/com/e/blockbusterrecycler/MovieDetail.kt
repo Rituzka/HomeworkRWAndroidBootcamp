@@ -5,7 +5,7 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.movie_detail.*
 
 class MovieDetail : AppCompatActivity() {
-    lateinit var  list: ModelMovies
+    private lateinit var list: ModelMovies
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
