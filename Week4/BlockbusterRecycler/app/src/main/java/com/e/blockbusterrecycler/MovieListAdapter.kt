@@ -1,11 +1,15 @@
 package com.e.blockbusterrecycler
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 
-class MovieListAdapter: RecyclerView.Adapter<MovieListViewHolder>() {
+class MovieListAdapter(
+   private val context: Context,
+   private val movies: List<ModelMovies>
+): RecyclerView.Adapter<MovieListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -14,12 +18,11 @@ class MovieListAdapter: RecyclerView.Adapter<MovieListViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return MovieRepo.movieList.size
+        return movies.size
     }
 
     override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
-        holder.movieImage.setImageResource(MovieRepo.movieList[position].poster)
-        holder.movieTitle.text = MovieRepo.movieList[position].title
-    }
+        holder.bindView(movies[position])
 
+    }
 }

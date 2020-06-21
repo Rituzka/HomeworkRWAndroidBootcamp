@@ -6,9 +6,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class MovieListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+class MovieListViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-    var movieImage = itemView.findViewById<ImageView>(R.id.imageMovie)
-    var movieTitle = itemView.findViewById<TextView>(R.id.movieTitle)
+    val movieImage = itemView.findViewById<ImageView>(R.id.imageMovie)
+    val movieTitle = itemView.findViewById<TextView>(R.id.movieTitle)
+
+    fun bindView(image: ModelMovies){
+        movieImage.setImageResource(image.poster)
+        movieTitle.text = image.title
+    }
 
 }
