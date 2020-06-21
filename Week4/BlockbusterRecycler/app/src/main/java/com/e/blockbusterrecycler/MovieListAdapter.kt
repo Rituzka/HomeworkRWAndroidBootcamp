@@ -7,9 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 class MovieListAdapter(
-   private val context: Context,
-   private val movies: List<ModelMovies>
+   private val movies: List<ModelMovies>,
+   val clickListener: MovieItemClicked
 ): RecyclerView.Adapter<MovieListViewHolder>() {
+
+    interface MovieItemClicked {
+        fun listItemClicked(list: ModelMovies)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -23,6 +27,9 @@ class MovieListAdapter(
 
     override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
         holder.bindView(movies[position])
+        holder.itemView.setOnClickListener {
+            clickListener.listItemClicked(movies[position])
+        }
 
     }
 }

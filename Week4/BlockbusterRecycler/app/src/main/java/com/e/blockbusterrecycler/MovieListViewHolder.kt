@@ -15,5 +15,4 @@ class MovieListViewHolder(view: View): RecyclerView.ViewHolder(view) {
         movieImage.setImageResource(image.poster)
         movieTitle.text = image.title
     }
-
 }
