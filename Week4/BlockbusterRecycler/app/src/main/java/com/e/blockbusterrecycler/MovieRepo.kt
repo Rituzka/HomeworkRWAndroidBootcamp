@@ -11,7 +11,7 @@ object MovieRepo {
               R.string.summaryTerminator,
               R.drawable.main_terminator,
               R.drawable.terminator_detail,
-              "DIRECTOR: James Cameron",
+              "James Cameron",
               R.string.starsTerminator
           ),
           ModelMovies(
@@ -21,7 +21,7 @@ object MovieRepo {
               R.string.summaryGoT,
               R.drawable.main_gamethrones,
               R.drawable.game_detail,
-              "DIRECTOR: David Benioff",
+              "David Benioff",
               R.string.starsGoT
           ),
           ModelMovies(
@@ -31,7 +31,7 @@ object MovieRepo {
               R.string.summaryStranger,
               R.drawable.main_stranger,
               R.drawable.stranger_detail,
-              "DIRECTOR: Matt Duffer, Ross Duffer",
+              "Matt Duffer, Ross Duffer",
               R.string.starsStrangerThings
           ),
           ModelMovies(
@@ -41,7 +41,7 @@ object MovieRepo {
               R.string.summaryBackFuture,
               R.drawable.main_backfuture,
               R.drawable.back_detail,
-              "DIRECTOR: Robert Zemeckis",
+              "Robert Zemeckis",
               R.string.starsBackFuture
           ),
           ModelMovies(
@@ -51,7 +51,7 @@ object MovieRepo {
               R.string.summaryReturnKing,
               R.drawable.main_returnking,
               R.drawable.returnking_detail,
-              "DIRECTOR: Peter Jackson",
+              "Peter Jackson",
               R.string.starsReturnKing
           ),
           ModelMovies(
@@ -61,7 +61,7 @@ object MovieRepo {
               R.string.summaryEmpire,
               R.drawable.main_empirestrikes,
               R.drawable.empire_detail,
-              "DIRECTOR: Irvin Kershner",
+              "Irvin Kershner",
               R.string.starsEmpire
           ),
           ModelMovies(
@@ -71,7 +71,7 @@ object MovieRepo {
               R.string.summaryAvengers,
               R.drawable.main_avengers,
               R.drawable.avengers_detail,
-              "DIRECTOR: Joss Whedon",
+              "Joss Whedon",
               R.string.starsAvengers
           ),
           ModelMovies(
@@ -81,7 +81,7 @@ object MovieRepo {
               R.string.summaryCaptain,
               R.drawable.main_captain,
               R.drawable.captain_detail,
-              "DIRECTOR: Joe Johnstone",
+              "Joe Johnstone",
               R.string.starsCaptain
           ),
           ModelMovies(
@@ -91,7 +91,7 @@ object MovieRepo {
               R.string.summaryWonder,
               R.drawable.main_wonderwoman,
               R.drawable.wonder_detail,
-              "DIRECTOR: Patty Jenkins",
+              "Patty Jenkins",
               R.string.starsWonder
           ),
           ModelMovies(
@@ -101,7 +101,7 @@ object MovieRepo {
               R.string.summaryIndy,
               R.drawable.main_indy,
               R.drawable.indy_detail,
-              "DIRECTOR: Steven Spielberg",
+              "Steven Spielberg",
               R.string.starsIndy
           )
       )

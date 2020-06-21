@@ -14,9 +14,8 @@ class MovieDetail : AppCompatActivity() {
         list = intent.getParcelableExtra(MainActivity.KEY_LIST)as ModelMovies
         image_detail.setImageResource(list.detail)
         lbl_movie_title.text = list.title
-        lbl_summary.text = list.summary.toString()
+        lbl_summary.setText(list.summary)
         lbl_director.text = list.director
-        lbl_stars.text = list.stars.toString()
-
+        lbl_stars.setText(list.stars)
     }
 }
