@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#EFD0DF"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:textAlignment="center">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="281dp"
+        android:contentDescription="@string/movie_detail"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/avengers_detail" />
+
+    <TextView
+        android:id="@+id/lbl_movietitle"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:hint="@string/title"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/lbl_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/summary"
+        android:paddingTop="12dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/lbl_director"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|start"
+        android:hint="@string/director" />
+
+    <TextView
+        android:id="@+id/lbl_stars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:hint="@string/star" />
+</LinearLayout>
