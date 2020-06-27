@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".loginActivity"
+        <activity android:name=".LoginActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +18,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MovieDetail"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:name=".MovieDetail"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

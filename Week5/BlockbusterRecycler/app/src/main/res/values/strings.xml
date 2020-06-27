@@ -30,4 +30,5 @@
     <string name="movie_logo">Movie Logo</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="logout">Logout</string>
 </resources>
