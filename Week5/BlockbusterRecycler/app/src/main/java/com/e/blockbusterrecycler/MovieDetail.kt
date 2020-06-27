@@ -18,4 +18,5 @@ class MovieDetail : AppCompatActivity() {
         lbl_director.text = list.director
         lbl_stars.setText(list.stars)
     }
+
 }

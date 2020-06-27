@@ -21,20 +21,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <EditText
         android:id="@+id/username"
+        android:inputType="text"
         android:layout_width="306dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginTop="1dp"
-        android:background="#CCB982"
-        android:gravity="center"
+        android:background="#d9b950"
+        android:gravity="center|start"
         android:hint="@string/username"
         android:padding="4dp"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
-        android:textStyle="bold|italic"
+        android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo_login" />
+        app:layout_constraintTop_toBottomOf="@+id/logo_login"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/btnLogin"
@@ -43,7 +46,7 @@
         android:layout_marginStart="160dp"
         android:layout_marginTop="61dp"
         android:layout_marginBottom="80dp"
-        android:background="#CCB982"
+        android:background="#b99a31"
         android:text="@string/login"
         android:textAlignment="center"
         android:textColor="@android:color/black"
@@ -52,19 +55,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
-    <TextView
+    <EditText
         android:id="@+id/password"
+        android:inputType="textPassword"
         android:layout_width="306dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginTop="16dp"
-        android:background="#CCB982"
-        android:gravity="center"
+        android:background="#d9b950"
+        android:gravity="center|start"
         android:hint="@string/password"
         android:padding="4dp"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
-        android:textStyle="bold|italic"
+        android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        android:autofillHints="" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
