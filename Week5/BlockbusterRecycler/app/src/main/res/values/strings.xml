@@ -26,4 +26,8 @@
     <string name="star">Stars:</string>
     <string name="director_lbl">Director:</string>
     <string name="textView">TextView</string>
+    <string name="login">LOGIN</string>
+    <string name="movie_logo">Movie Logo</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
 </resources>
