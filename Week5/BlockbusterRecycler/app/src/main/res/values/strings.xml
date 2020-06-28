@@ -36,4 +36,6 @@
     <string name="usernameshort">Username too short!</string>
     <string name="usernameempty">Username cannot be empty</string>
     <string name="inputerror">Fields too short or empty, try again!</string>
+    <string name="saveData">save_data</string>
+    <string name="userlogged">user_logged</string>
 </resources>

@@ -16,14 +16,17 @@ class RoomRepository: MovieRoomRepository {
         InsertAsyncTask(movieDao).execute(movie)
     }
 
-    override fun getMovie() = allMovies
+    override fun getMovies() = allMovies
 
     override fun clearMovie(movie: ModelMovies) {
-
+    DeleteAsyncTask(movieDao).execute(movie)
     }
 
     override fun clearAllMovies() {
-
+    val movieArray = allMovies.value?.toTypedArray()
+        if(movieArray!= null){
+            DeleteAsyncTask(movieDao).execute(*movieArray)
+        }
     }
     private class InsertAsyncTask internal constructor(private val dao: MovieDAO) :
         AsyncTask<ModelMovies, Void, Void>() {
@@ -33,4 +36,10 @@ class RoomRepository: MovieRoomRepository {
         }
     }
 
+    private class DeleteAsyncTask internal constructor(private val dao: MovieDAO) : AsyncTask<ModelMovies, Void, Void>() {
+        override fun doInBackground(vararg params: ModelMovies): Void? {
+            dao.clearMovies(*params)
+            return null
+        }
+    }
 }

@@ -7,22 +7,27 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.e.blockbusterrecycler.R
-import com.e.blockbusterrecycler.model.UserRepo
 import kotlinx.android.synthetic.main.activity_login.*
 
-
-
 class LoginActivity : AppCompatActivity() {
+
 
 override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_login)
 
+    val sharedPref = getSharedPreferences(getString(R.string.saveData), Context.MODE_PRIVATE)
+    val userLogged = sharedPref.getBoolean(getString(R.string.userlogged),false)
+
+    if (userLogged) goToListMovies()
+
+
     //button login, after validation saves username and go to main activity
     btnLogin.setOnClickListener {
        if(isLoginValid()) {
+         sharedPref.edit().putBoolean(getString(R.string.userlogged),true).apply()
            goToListMovies()
-           UserRepo.signIn(this, username.text.toString())
+
        } else
            showErrors()
     }
@@ -60,6 +65,5 @@ override fun onCreate(savedInstanceState: Bundle?) {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
-
 }
 

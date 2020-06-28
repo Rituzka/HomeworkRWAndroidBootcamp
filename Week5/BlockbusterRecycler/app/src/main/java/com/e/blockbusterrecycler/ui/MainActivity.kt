@@ -1,5 +1,6 @@
 package com.e.blockbusterrecycler.ui
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.e.blockbusterrecycler.R
 import com.e.blockbusterrecycler.model.ModelMovies
 import com.e.blockbusterrecycler.model.MovieRepo
-import com.e.blockbusterrecycler.model.UserRepo
+
 
 
 class MainActivity : AppCompatActivity(),
@@ -19,22 +20,9 @@ class MainActivity : AppCompatActivity(),
 
     private lateinit var movieList:RecyclerView
 
+
     companion object {
         const val KEY_LIST = "list"
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-     UserRepo.logOut(this)
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-        finish()
-        return true
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +40,19 @@ class MainActivity : AppCompatActivity(),
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val sharedPref = getSharedPreferences(getString(R.string.saveData), Context.MODE_PRIVATE)
+        sharedPref.edit().putBoolean(getString(R.string.userlogged),false).apply()
+        goToLogin()
+        return true
+    }
+
     fun showMovieDetail(list: ModelMovies){
         val itemMovie = Intent(this, MovieDetail::class.java)
         itemMovie.putExtra(KEY_LIST,list)
@@ -60,6 +61,11 @@ class MainActivity : AppCompatActivity(),
 
     override fun listItemClicked(list: ModelMovies) {
         showMovieDetail(list)
+    }
+
+    fun goToLogin(){
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
     }
 
 }
