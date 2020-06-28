@@ -31,4 +31,9 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="logout">Logout</string>
+    <string name="passwordShort">Password too short</string>
+    <string name="passwordempty">Password cannot be empty!</string>
+    <string name="usernameshort">Username too short!</string>
+    <string name="usernameempty">Username cannot be empty</string>
+    <string name="inputerror">Fields too short or empty, try again!</string>
 </resources>
