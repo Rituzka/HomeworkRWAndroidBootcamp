@@ -7,7 +7,7 @@
     android:background="@drawable/back4"
     android:fadingEdge="horizontal"
     android:focusable="auto"
-    tools:context=".LoginActivity">
+    tools:context=".ui.LoginActivity">
 
     <ImageView
         android:id="@+id/logo_login"

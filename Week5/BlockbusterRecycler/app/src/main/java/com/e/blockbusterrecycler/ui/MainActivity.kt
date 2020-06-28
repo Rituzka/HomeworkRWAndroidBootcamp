@@ -1,4 +1,4 @@
-package com.e.blockbusterrecycler
+package com.e.blockbusterrecycler.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,10 +8,14 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.e.blockbusterrecycler.R
+import com.e.blockbusterrecycler.model.ModelMovies
+import com.e.blockbusterrecycler.model.MovieRepo
+import com.e.blockbusterrecycler.model.UserRepo
 
 
-
-class MainActivity : AppCompatActivity(), MovieListAdapter.MovieItemClicked {
+class MainActivity : AppCompatActivity(),
+    MovieListAdapter.MovieItemClicked {
 
     private lateinit var movieList:RecyclerView
 
@@ -40,7 +44,11 @@ class MainActivity : AppCompatActivity(), MovieListAdapter.MovieItemClicked {
 
         this.movieList = findViewById(R.id.movieRecycler)
         movieList.layoutManager = GridLayoutManager(this, 3)
-        movieList.adapter = MovieListAdapter(MovieRepo.movieList, this)
+        movieList.adapter =
+            MovieListAdapter(
+                MovieRepo.movieList,
+                this
+            )
 
     }
 

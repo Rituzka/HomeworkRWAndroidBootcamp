@@ -1,16 +1,13 @@
-package com.e.blockbusterrecycler
+package com.e.blockbusterrecycler.ui
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.KeyEvent
-import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
-import android.widget.Toast.LENGTH_LONG
-import android.widget.Toast.makeText
 import androidx.appcompat.app.AppCompatActivity
+import com.e.blockbusterrecycler.R
+import com.e.blockbusterrecycler.model.UserRepo
 import kotlinx.android.synthetic.main.activity_login.*
 
 

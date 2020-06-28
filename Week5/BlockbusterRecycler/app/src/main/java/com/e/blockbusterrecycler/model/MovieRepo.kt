@@ -1,4 +1,6 @@
-package com.e.blockbusterrecycler
+package com.e.blockbusterrecycler.model
+
+import com.e.blockbusterrecycler.R
 
 
 object MovieRepo {

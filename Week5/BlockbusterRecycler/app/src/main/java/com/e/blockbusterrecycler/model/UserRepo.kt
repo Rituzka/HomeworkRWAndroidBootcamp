@@ -1,4 +1,4 @@
-package com.e.blockbusterrecycler
+package com.e.blockbusterrecycler.model
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE

@@ -1,12 +1,9 @@
-package com.e.blockbusterrecycler
+package com.e.blockbusterrecycler.ui
 
-import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
+import com.e.blockbusterrecycler.R
+import com.e.blockbusterrecycler.model.ModelMovies
 import kotlinx.android.synthetic.main.movie_detail.*
 
 class MovieDetail : AppCompatActivity() {
