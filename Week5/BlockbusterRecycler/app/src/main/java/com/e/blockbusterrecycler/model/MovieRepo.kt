@@ -107,5 +107,4 @@ object MovieRepo {
               R.string.starsIndy
           )
       )
-
 }

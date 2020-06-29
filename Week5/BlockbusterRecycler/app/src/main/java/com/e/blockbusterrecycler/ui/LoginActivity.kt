@@ -25,10 +25,12 @@ override fun onCreate(savedInstanceState: Bundle?) {
     //button login, after validation saves username and go to main activity
     btnLogin.setOnClickListener {
        if(isLoginValid()) {
+           hideKeyboard()
          sharedPref.edit().putBoolean(getString(R.string.userlogged),true).apply()
            goToListMovies()
 
        } else
+           hideKeyboard()
            showErrors()
     }
 }
@@ -51,7 +53,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
                 && password.length() > 3
 
 
-  //Hide Keyboard in Login screen (will be done if I have enough time!!)
+  //Hide Keyboard in Login screen when action is done
     private fun hideKeyboard() {
         val view: View? = this.currentFocus
         if (view != null) {
