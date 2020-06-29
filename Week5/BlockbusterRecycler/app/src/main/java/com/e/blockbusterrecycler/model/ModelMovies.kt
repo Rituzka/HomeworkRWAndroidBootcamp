@@ -1,10 +1,13 @@
-package com.e.blockbusterrecycler
+package com.e.blockbusterrecycler.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity(tableName = "movies")
 data class ModelMovies (
-    val id: Int,
+    @PrimaryKey val id: Int,
     val releaseDate: String,
     val title: String,
     val summary: Int,
