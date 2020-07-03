@@ -1,7 +1,9 @@
-package com.e.blockbusterrecycler
+package com.e.blockbusterrecycler.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.e.blockbusterrecycler.R
+import com.e.blockbusterrecycler.model.ModelMovies
 import kotlinx.android.synthetic.main.movie_detail.*
 
 class MovieDetail : AppCompatActivity() {
@@ -18,4 +20,5 @@ class MovieDetail : AppCompatActivity() {
         lbl_director.text = list.director
         lbl_stars.setText(list.stars)
     }
+
 }
