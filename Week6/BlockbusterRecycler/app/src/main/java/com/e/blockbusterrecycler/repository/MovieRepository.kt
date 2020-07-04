@@ -6,10 +6,10 @@ import com.e.blockbusterrecycler.model.ModelMovie
 class MovieRepository {
     private val movieDao = MovieInjector.movieDataBase.movieDao()
 
-    fun getAllMovies(): List<ModelMovie> = movieDao.getAllMovies()
+    suspend fun getAllMovies(): List<ModelMovie> = movieDao.getAllMovies()
 
-    fun getMovieById(movieId: Int) = movieDao.getMovieById(movieId)
+    suspend fun getMovieById(movieId: Int) = movieDao.getMovieById(movieId)
 
-    fun insertOrUpdateMovies(movies: List<ModelMovie>) = movieDao.insertOrUpdateMovie(movies)
+    suspend fun insertOrUpdateMovies(movie: ModelMovie) = movieDao.insertOrUpdateMovie(movie)
 
 }
