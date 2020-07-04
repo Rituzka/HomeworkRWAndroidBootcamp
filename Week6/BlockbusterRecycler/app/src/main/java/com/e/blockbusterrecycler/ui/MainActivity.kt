@@ -10,8 +10,8 @@ import android.view.MenuItem
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.e.blockbusterrecycler.R
-import com.e.blockbusterrecycler.model.ModelMovies
-import com.e.blockbusterrecycler.model.MovieRepo
+import com.e.blockbusterrecycler.model.ModelMovie
+import com.e.blockbusterrecycler.repository.DummyDataMovies
 
 
 
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(),
         movieList.layoutManager = GridLayoutManager(this, 3)
         movieList.adapter =
             MovieListAdapter(
-                MovieRepo.movieList,
+                DummyDataMovies.movieList,
                 this
             )
 
@@ -53,13 +53,13 @@ class MainActivity : AppCompatActivity(),
         return true
     }
 
-    fun showMovieDetail(list: ModelMovies){
+    fun showMovieDetail(list: ModelMovie){
         val itemMovie = Intent(this, MovieDetail::class.java)
         itemMovie.putExtra(KEY_LIST,list)
         startActivity(itemMovie)
     }
 
-    override fun listItemClicked(list: ModelMovies) {
+    override fun listItemClicked(list: ModelMovie) {
         showMovieDetail(list)
     }
 

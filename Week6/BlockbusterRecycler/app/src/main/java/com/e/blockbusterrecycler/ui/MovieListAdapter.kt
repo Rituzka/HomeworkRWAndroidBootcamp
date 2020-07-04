@@ -4,16 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.e.blockbusterrecycler.R
-import com.e.blockbusterrecycler.model.ModelMovies
+import com.e.blockbusterrecycler.model.ModelMovie
 
 
 class MovieListAdapter(
-    private val movies: List<ModelMovies>,
+    private val movies: List<ModelMovie>,
     private val clickListener: MovieItemClicked
 ): RecyclerView.Adapter<MovieListViewHolder>() {
 
     interface MovieItemClicked {
-        fun listItemClicked(list: ModelMovies)
+        fun listItemClicked(list: ModelMovie)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {

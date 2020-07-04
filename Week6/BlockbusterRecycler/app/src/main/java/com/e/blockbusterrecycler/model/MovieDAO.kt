@@ -1,21 +1,19 @@
 package com.e.blockbusterrecycler.model
 
-import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import com.e.blockbusterrecycler.model.ModelMovies
+import androidx.room.*
 
 @Dao
 interface MovieDAO {
 
-    @Insert
-    fun insert(movie: ModelMovies)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertOrUpdateMovie(movie: ModelMovie)
 
     @Delete
-    fun clearMovies(vararg movie: ModelMovies)
+    suspend fun clearMovie(movie: ModelMovie)
 
-    @Query("SELECT * FROM movies ORDER BY title ASC")
-    fun getAllMovies(): LiveData<List<ModelMovies>>
+    @Query("SELECT * FROM movies")
+    suspend fun getAllMovies(): List<ModelMovie>
+
+    @Query("SELECT * FROM movies WHERE id = :id")
+    suspend fun getMovieById(id: Int): ModelMovie
 }

@@ -1,12 +1,13 @@
-package com.e.blockbusterrecycler.model
+package com.e.blockbusterrecycler.repository
 
 import com.e.blockbusterrecycler.R
+import com.e.blockbusterrecycler.model.ModelMovie
 
 
-object MovieRepo {
+object DummyDataMovies {
 
       val movieList = listOf(
-          ModelMovies(
+          ModelMovie(
               1,
               "10/26/1984",
               "The Terminator",
@@ -16,7 +17,7 @@ object MovieRepo {
               "James Cameron",
               R.string.starsTerminator
           ),
-          ModelMovies(
+          ModelMovie(
               2,
               "2011 - 2019",
               "Game of Thrones",
@@ -26,7 +27,7 @@ object MovieRepo {
               "David Benioff",
               R.string.starsGoT
           ),
-          ModelMovies(
+          ModelMovie(
               3,
               "2016 - 2020",
               "Stranger Things",
@@ -36,7 +37,7 @@ object MovieRepo {
               "Matt Duffer, Ross Duffer",
               R.string.starsStrangerThings
           ),
-          ModelMovies(
+          ModelMovie(
               4,
               "07/03/1985",
               "Back to the Future",
@@ -46,7 +47,7 @@ object MovieRepo {
               "Robert Zemeckis",
               R.string.starsBackFuture
           ),
-          ModelMovies(
+          ModelMovie(
               5,
               "12/17/2003",
               "Lord of the Rings",
@@ -56,7 +57,7 @@ object MovieRepo {
               "Peter Jackson",
               R.string.starsReturnKing
           ),
-          ModelMovies(
+          ModelMovie(
               6,
               "06/20/1980",
               "Star Wars",
@@ -66,7 +67,7 @@ object MovieRepo {
               "Irvin Kershner",
               R.string.starsEmpire
           ),
-          ModelMovies(
+          ModelMovie(
               7,
               "04/04/2012",
               "The Avengers",
@@ -76,7 +77,7 @@ object MovieRepo {
               "Joss Whedon",
               R.string.starsAvengers
           ),
-          ModelMovies(
+          ModelMovie(
               8,
               "07/22/2011",
               "Captain America",
@@ -86,7 +87,7 @@ object MovieRepo {
               "Joe Johnstone",
               R.string.starsCaptain
           ),
-          ModelMovies(
+          ModelMovie(
               9,
               "06/03/2017",
               "Wonder Woman",
@@ -96,7 +97,7 @@ object MovieRepo {
               "Patty Jenkins",
               R.string.starsWonder
           ),
-          ModelMovies(
+          ModelMovie(
               10,
               "05/23/1984",
               "Indiana Jones",
