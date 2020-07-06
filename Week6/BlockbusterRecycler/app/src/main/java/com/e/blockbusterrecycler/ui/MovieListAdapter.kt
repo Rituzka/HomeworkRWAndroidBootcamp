@@ -8,9 +8,10 @@ import com.e.blockbusterrecycler.model.Movie
 
 
 class MovieListAdapter(
-    private val movies: List<Movie>,
     private val clickListener: MovieItemClicked
 ): RecyclerView.Adapter<MovieListViewHolder>() {
+
+    private val movies = mutableListOf<Movie>()
 
     interface MovieItemClicked {
         fun listItemClicked(list: Movie)
@@ -32,6 +33,11 @@ class MovieListAdapter(
             clickListener.listItemClicked(movies[position])
         }
 
+    }
+    fun setMovies(movies: List<Movie>) {
+        this.movies.clear()
+        this.movies.addAll(movies)
+        notifyDataSetChanged()
     }
 
 }
