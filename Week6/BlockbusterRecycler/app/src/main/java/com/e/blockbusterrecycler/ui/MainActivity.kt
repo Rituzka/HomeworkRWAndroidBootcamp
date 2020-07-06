@@ -7,19 +7,21 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.e.blockbusterrecycler.R
-import com.e.blockbusterrecycler.model.ModelMovies
+import com.e.blockbusterrecycler.app.DataMovieApplication
+import com.e.blockbusterrecycler.model.Movie
 import com.e.blockbusterrecycler.model.MovieRepo
-
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity(),
     MovieListAdapter.MovieItemClicked {
 
-    private lateinit var movieList:RecyclerView
-
+    lateinit var movieList: List<Movie>
 
     companion object {
         const val KEY_LIST = "list"
@@ -28,16 +30,16 @@ class MainActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
-        this.movieList = findViewById(R.id.movieRecycler)
-        movieList.layoutManager = GridLayoutManager(this, 3)
-        movieList.adapter =
-            MovieListAdapter(
-                MovieRepo.movieList,
-                this
-            )
-
+         movieList = mutableListOf()
+        movieRecycler.layoutManager = GridLayoutManager(this, 3)
+        movieRecycler.adapter =
+            getMovies()?.let {
+                MovieListAdapter(
+                    it,
+                    //MovieRepo.movieList,
+                    this
+                )
+            }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -53,19 +55,31 @@ class MainActivity : AppCompatActivity(),
         return true
     }
 
-    fun showMovieDetail(list: ModelMovies){
+    fun showMovieDetail(list: Movie){
         val itemMovie = Intent(this, MovieDetail::class.java)
         itemMovie.putExtra(KEY_LIST,list)
         startActivity(itemMovie)
     }
 
-    override fun listItemClicked(list: ModelMovies) {
+    override fun listItemClicked(list: Movie) {
         showMovieDetail(list)
     }
 
     fun goToLogin(){
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
+        finish()
+    }
+
+    fun getMovies(): List<Movie>? {
+      var moviesMain:List<Movie>? = null
+        lifecycleScope.launch(Dispatchers.IO) {
+            movieList = DataMovieApplication.database.movieDao().getAllMovies()
+            launch(Dispatchers.Main) {
+                moviesMain = movieList
+            }
+        }
+        return moviesMain
     }
 
 }
