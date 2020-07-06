@@ -8,13 +8,17 @@ import com.e.blockbusterrecycler.model.ModelMovie
 
 
 class MovieListAdapter(
-    private val movies: List<ModelMovie>,
-    private val clickListener: MovieItemClicked
+    private val onMovieClicked: (ModelMovie) -> Unit
 ): RecyclerView.Adapter<MovieListViewHolder>() {
 
-    interface MovieItemClicked {
-        fun listItemClicked(list: ModelMovie)
+    private val movies = mutableListOf<ModelMovie>()
+
+    fun setMovies(movies: List<ModelMovie>) {
+        this.movies.clear()
+        this.movies.addAll(movies)
+        notifyDataSetChanged()
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -27,11 +31,8 @@ class MovieListAdapter(
     }
 
     override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
-        holder.bindView(movies[position])
-        holder.itemView.setOnClickListener {
-            clickListener.listItemClicked(movies[position])
+        holder.bindView(movies[position], onMovieClicked)
         }
 
     }
 
-}

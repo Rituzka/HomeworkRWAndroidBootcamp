@@ -4,12 +4,17 @@ import com.e.blockbusterrecycler.app.MovieInjector
 import com.e.blockbusterrecycler.model.ModelMovie
 
 class MovieRepository {
+
     private val movieDao = MovieInjector.movieDataBase.movieDao()
 
-    suspend fun getAllMovies(): List<ModelMovie> = movieDao.getAllMovies()
+    fun getAllMovies() = movieDao.fetchMovies()
 
-    suspend fun getMovieById(movieId: Int) = movieDao.getMovieById(movieId)
+    fun getMovieById(movieId: Int?) = movieDao.fetchMovieById(movieId)
 
-    suspend fun insertOrUpdateMovies(movie: ModelMovie) = movieDao.insertOrUpdateMovie(movie)
+    fun storeMovies(movies: List<ModelMovie>) = movieDao.storeMovies(movies)
+
+     fun storeMoviesIfNotEmpty(movies: List<ModelMovie>) {
+        if (getAllMovies().count() < 1) storeMovies(movies)
+    }
 
 }

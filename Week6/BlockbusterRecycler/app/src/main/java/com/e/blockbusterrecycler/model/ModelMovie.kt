@@ -1,55 +1,18 @@
 package com.e.blockbusterrecycler.model
 
-import android.os.Parcel
-import android.os.Parcelable
+
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "movies")
+@Entity
 data class ModelMovie (
-    @PrimaryKey val id: Int,
-    val releaseDate: String,
-    val title: String,
-    val summary: Int,
+    @PrimaryKey var id: Int? = null,
+    var releaseDate: String? = null,
+    var title: String? = null,
+    var summary: String? = null,
     val poster:Int,
     val detail:Int,
-    val director: String,
-    val stars: Int
-): Parcelable {
-    constructor(parcel: Parcel) : this(
-    parcel.readInt(),
-    parcel.readString()!!,
-    parcel.readString()!!,
-    parcel.readInt(),
-    parcel.readInt(),
-    parcel.readInt(),
-    parcel.readString()!!,
-    parcel.readInt()
-    )
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
-        parcel.writeString(releaseDate)
-        parcel.writeString(title)
-        parcel.writeInt(summary)
-        parcel.writeInt(poster)
-        parcel.writeInt(detail)
-        parcel.writeString(director)
-        parcel.writeInt(stars)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<ModelMovie> {
-
-        override fun createFromParcel(parcel: Parcel): ModelMovie {
-            return ModelMovie(parcel)
-        }
-
-        override fun newArray(size: Int): Array<ModelMovie?> = arrayOfNulls(size)
-    }
-}
-
+    var director: String? = null,
+    var stars: String? = null
+)
 

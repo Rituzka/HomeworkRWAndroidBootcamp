@@ -1,14 +1,13 @@
 package com.e.blockbusterrecycler.model
 
-import android.content.Context
+
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 
-const val DATABASE = "movies"
+const val DATABASE_NAME = "movie_database"
 
 @Database(
-    entities = [(ModelMovie::class)],
+    entities = [ModelMovie::class],
     version = 1,
     exportSchema = false
 )

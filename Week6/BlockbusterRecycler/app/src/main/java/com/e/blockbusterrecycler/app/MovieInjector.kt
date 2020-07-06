@@ -2,7 +2,7 @@ package com.e.blockbusterrecycler.app
 
 import android.app.Application
 import androidx.room.Room
-import com.e.blockbusterrecycler.model.DATABASE
+import com.e.blockbusterrecycler.model.DATABASE_NAME
 import com.e.blockbusterrecycler.model.RoomMovieDatabase
 
 
@@ -12,7 +12,8 @@ companion object {
     private lateinit var instance: MovieInjector
     lateinit var movieDataBase: RoomMovieDatabase
 
-    fun getAppContext(): MovieInjector = instance
+    fun getAppContext() = instance
+
 }
 
 override fun onCreate(){
@@ -22,7 +23,7 @@ override fun onCreate(){
 }
 
     private fun initRoom() {
-        movieDataBase = Room.databaseBuilder(this, RoomMovieDatabase::class.java, DATABASE)
+        movieDataBase = Room.databaseBuilder(this, RoomMovieDatabase::class.java, DATABASE_NAME)
             .allowMainThreadQueries()
             .build()
     }
