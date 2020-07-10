@@ -5,8 +5,8 @@ import com.e.blockbusterrecycler.R
 
 object MovieRepo {
 
-      var movieList = listOf(
-          Movie(
+      val movieList = listOf(
+          ModelMovies(
               1,
               "10/26/1984",
               "The Terminator",
@@ -16,7 +16,7 @@ object MovieRepo {
               "James Cameron",
               R.string.starsTerminator
           ),
-          Movie(
+          ModelMovies(
               2,
               "2011 - 2019",
               "Game of Thrones",
@@ -26,7 +26,7 @@ object MovieRepo {
               "David Benioff",
               R.string.starsGoT
           ),
-          Movie(
+          ModelMovies(
               3,
               "2016 - 2020",
               "Stranger Things",
@@ -36,7 +36,7 @@ object MovieRepo {
               "Matt Duffer, Ross Duffer",
               R.string.starsStrangerThings
           ),
-          Movie(
+          ModelMovies(
               4,
               "07/03/1985",
               "Back to the Future",
@@ -46,7 +46,7 @@ object MovieRepo {
               "Robert Zemeckis",
               R.string.starsBackFuture
           ),
-          Movie(
+          ModelMovies(
               5,
               "12/17/2003",
               "Lord of the Rings",
@@ -56,7 +56,7 @@ object MovieRepo {
               "Peter Jackson",
               R.string.starsReturnKing
           ),
-          Movie(
+          ModelMovies(
               6,
               "06/20/1980",
               "Star Wars",
@@ -66,7 +66,7 @@ object MovieRepo {
               "Irvin Kershner",
               R.string.starsEmpire
           ),
-          Movie(
+          ModelMovies(
               7,
               "04/04/2012",
               "The Avengers",
@@ -76,7 +76,7 @@ object MovieRepo {
               "Joss Whedon",
               R.string.starsAvengers
           ),
-          Movie(
+          ModelMovies(
               8,
               "07/22/2011",
               "Captain America",
@@ -86,7 +86,7 @@ object MovieRepo {
               "Joe Johnstone",
               R.string.starsCaptain
           ),
-          Movie(
+          ModelMovies(
               9,
               "06/03/2017",
               "Wonder Woman",
@@ -96,7 +96,7 @@ object MovieRepo {
               "Patty Jenkins",
               R.string.starsWonder
           ),
-          Movie(
+          ModelMovies(
               10,
               "05/23/1984",
               "Indiana Jones",

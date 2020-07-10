@@ -4,17 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.e.blockbusterrecycler.R
-import com.e.blockbusterrecycler.model.Movie
+import com.e.blockbusterrecycler.model.ModelMovies
 
 
 class MovieListAdapter(
+    private val movies: List<ModelMovies>,
     private val clickListener: MovieItemClicked
 ): RecyclerView.Adapter<MovieListViewHolder>() {
 
-    private val movies = mutableListOf<Movie>()
-
     interface MovieItemClicked {
-        fun listItemClicked(list: Movie)
+        fun listItemClicked(list: ModelMovies)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
@@ -33,11 +32,6 @@ class MovieListAdapter(
             clickListener.listItemClicked(movies[position])
         }
 
-    }
-    fun setMovies(movies: List<Movie>) {
-        this.movies.clear()
-        this.movies.addAll(movies)
-        notifyDataSetChanged()
     }
 
 }

@@ -2,26 +2,25 @@ package com.e.blockbusterrecycler.app
 
 import android.app.Application
 import android.content.Context
-import androidx.room.Room
 import androidx.room.Room.databaseBuilder
-import com.e.blockbusterrecycler.model.DATABASE_NAME
 import com.e.blockbusterrecycler.model.MovieDatabase
 
 class DataMovieApplication: Application() {
 
     companion object {
         lateinit var database: MovieDatabase
+        private lateinit var instance: DataMovieApplication
+
+        fun getAppContext(): Context = instance.applicationContext
     }
 
-    override fun onCreate(){
+    override fun onCreate() {
+        instance = this
         super.onCreate()
-        DataMovieApplication.database = Room.databaseBuilder(
-            this,
-                     MovieDatabase::class.java,
-                    DATABASE_NAME
-        ).build()
+
+        database = databaseBuilder(this, MovieDatabase::class.java, "movie_database").build()
+
     }
-
-
 
 }
+
