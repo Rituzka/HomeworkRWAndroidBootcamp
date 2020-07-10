@@ -7,14 +7,14 @@ import androidx.room.*
 interface MovieDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertMovies(movies: List<Movie>)
+    suspend fun insertMovies(movies: List<Movie>)
 
     @Query("SELECT * FROM movies")
-    fun findAllMovies(): List<Movie>
+    suspend fun findAllMovies(): List<Movie>
 
     @Query("SELECT * FROM movies WHERE id = :movieId")
-    fun findMovieById(movieId: Int?): Movie
+    suspend fun findMovieById(movieId: Int?): Movie
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertMovie(movie: Movie)
+    suspend fun insertMovie(movie: Movie)
 }

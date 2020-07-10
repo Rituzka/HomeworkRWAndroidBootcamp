@@ -7,13 +7,15 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.e.blockbusterrecycler.R
 import com.e.blockbusterrecycler.model.Movie
 import com.e.blockbusterrecycler.model.DummyMovieRepo
 import com.e.blockbusterrecycler.model.MovieRoomRepo
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 const val KEY_LIST = "list"
 
@@ -26,14 +28,17 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        movieRepository.storeMoviesIfNotEmpty(DummyMovieRepo.movieList)
-
-        movieRecycler.layoutManager = GridLayoutManager(this, 3)
-        movieRecycler.adapter =
-            MovieListAdapter(
-                movieRepository.getAllMovies(),
-                this
-            )
+        lifecycleScope.launch(Dispatchers.Main) {
+            movieRepository.storeMoviesIfNotEmpty(DummyMovieRepo.movieList)
+        }
+            movieRecycler.layoutManager = GridLayoutManager(this, 3)
+          lifecycleScope.launch(Dispatchers.Main) {
+              movieRecycler.adapter =
+                  MovieListAdapter(
+                      movieRepository.getAllMovies(),
+                      this@MainActivity
+                  )
+          }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

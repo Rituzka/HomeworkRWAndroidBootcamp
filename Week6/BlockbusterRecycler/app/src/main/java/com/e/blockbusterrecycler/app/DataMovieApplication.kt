@@ -18,7 +18,6 @@ class DataMovieApplication: Application() {
         super.onCreate()
         DataMovieApplication.database = Room.databaseBuilder( applicationContext,
         MovieDatabase::class.java, DATABASE_NAME)
-            .allowMainThreadQueries()
             .build()
     }
 

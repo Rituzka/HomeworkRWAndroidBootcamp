@@ -8,10 +8,10 @@ class MovieRoomRepo {
 
     private val movieDao = DataMovieApplication.database.movieDao()
 
-    fun getAllMovies():List<Movie> = movieDao.findAllMovies()
-    fun getMovieById(movieId: Int?)= movieDao.findMovieById(movieId)
-    fun storeMovies(movies: List<Movie>)= movieDao.insertMovies(movies)
-    fun storeMoviesIfNotEmpty(movies: List<Movie>){
+    suspend fun getAllMovies():List<Movie> = movieDao.findAllMovies()
+    suspend fun getMovieById(movieId: Int?)= movieDao.findMovieById(movieId)
+    suspend fun storeMovies(movies: List<Movie>)= movieDao.insertMovies(movies)
+    suspend fun storeMoviesIfNotEmpty(movies: List<Movie>){
         if(getAllMovies().count() < 1) storeMovies(movies)
     }
 }
