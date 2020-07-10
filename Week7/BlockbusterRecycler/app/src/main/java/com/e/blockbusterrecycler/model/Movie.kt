@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "movies")
-data class ModelMovies (
+data class Movie (
     @PrimaryKey val id: Int,
     val releaseDate: String,
     val title: String,
@@ -42,13 +42,13 @@ data class ModelMovies (
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<ModelMovies> {
+    companion object CREATOR : Parcelable.Creator<Movie> {
 
-        override fun createFromParcel(parcel: Parcel): ModelMovies {
-            return ModelMovies(parcel)
+        override fun createFromParcel(parcel: Parcel): Movie {
+            return Movie(parcel)
         }
 
-        override fun newArray(size: Int): Array<ModelMovies?> = arrayOfNulls(size)
+        override fun newArray(size: Int): Array<Movie?> = arrayOfNulls(size)
     }
 }
 
