@@ -10,34 +10,30 @@ import android.view.MenuItem
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.e.blockbusterrecycler.R
-import com.e.blockbusterrecycler.model.ModelMovies
-import com.e.blockbusterrecycler.model.MovieRepo
+import com.e.blockbusterrecycler.model.Movie
+import com.e.blockbusterrecycler.model.DummyMovieRepo
+import com.e.blockbusterrecycler.model.MovieRoomRepo
+import kotlinx.android.synthetic.main.activity_main.*
 
-
+const val KEY_LIST = "list"
 
 class MainActivity : AppCompatActivity(),
     MovieListAdapter.MovieItemClicked {
 
-    private lateinit var movieList:RecyclerView
-
-
-    companion object {
-        const val KEY_LIST = "list"
-    }
+    private val movieRepository by lazy { MovieRoomRepo() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        movieRepository.storeMoviesIfNotEmpty(DummyMovieRepo.movieList)
 
-        this.movieList = findViewById(R.id.movieRecycler)
-        movieList.layoutManager = GridLayoutManager(this, 3)
-        movieList.adapter =
+        movieRecycler.layoutManager = GridLayoutManager(this, 3)
+        movieRecycler.adapter =
             MovieListAdapter(
-                MovieRepo.movieList,
+                movieRepository.getAllMovies(),
                 this
             )
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -53,13 +49,13 @@ class MainActivity : AppCompatActivity(),
         return true
     }
 
-    fun showMovieDetail(list: ModelMovies){
+    fun showMovieDetail(list: Movie){
         val itemMovie = Intent(this, MovieDetail::class.java)
         itemMovie.putExtra(KEY_LIST,list)
         startActivity(itemMovie)
     }
 
-    override fun listItemClicked(list: ModelMovies) {
+    override fun listItemClicked(list: Movie) {
         showMovieDetail(list)
     }
 
