@@ -1,4 +1,4 @@
-package com.e.thepokemons.fragments
+package com.e.thepokemons.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
