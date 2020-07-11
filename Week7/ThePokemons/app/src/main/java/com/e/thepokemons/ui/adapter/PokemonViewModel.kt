@@ -10,10 +10,4 @@ class PokemonViewModel(itemView: View) : RecyclerView.ViewHolder(itemView) {
      val pokemonImage = itemView.pokemon_image
      val pokemonName = itemView.pokemon_name
 
-    fun bindViews(pokemon: Pokemon) {
-       // pokemonImage.set(pokemon.image)
-        pokemonName.text = pokemon.name
-    }
-
-
 }
