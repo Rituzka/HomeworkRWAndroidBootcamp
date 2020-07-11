@@ -7,7 +7,7 @@ class App {
 
     companion object {
 
-        fun getToken() = R.string.KEY_TOKEN ?: ""
+        fun getToken() = R.string.KEY_TOKEN
         private val apiService by lazy { buildApiService() }
         val remoteApi by lazy { RemoteApi(apiService) }
 

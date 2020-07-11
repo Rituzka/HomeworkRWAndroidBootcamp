@@ -7,6 +7,6 @@ import com.e.thepokemons.R
 class PokemonListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pokemonList)
+        setContentView(R.layout.activity_pokemon_list)
     }
 }
