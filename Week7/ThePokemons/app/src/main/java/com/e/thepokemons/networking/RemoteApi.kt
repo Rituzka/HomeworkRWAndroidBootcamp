@@ -1,6 +1,6 @@
 package com.e.thepokemons.networking
 
-const val BASE_URL = "http://pokeapi.co/api/v2/"
+const val BASE_URL = "https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json"
 
 class RemoteApi(private val remoteApiService: RemoteApiService) {
 }
