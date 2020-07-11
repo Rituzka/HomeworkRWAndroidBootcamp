@@ -1,25 +1,5 @@
 <resources>
     <string name="app_name">BlockbusterRecycler</string>
-    <string name="summaryTerminator">In 1984, a human soldier is tasked to stop an indestructible cyborg killing machine, both sent from 2029, from executing a young woman, whose unborn son is the key to humanity\'s future salvation.</string>
-    <string name="summaryGoT">Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia.</string>
-    <string name="summaryStranger">When a young boy disappears, his mother, a police chief and his friends must confront terrifying supernatural forces in order to get him back.</string>
-    <string name="summaryBackFuture">Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the eccentric scientist Doc Brown.</string>
-    <string name="summaryReturnKing">Gandalf and Aragorn lead the World of Men against Sauron\'s army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.</string>
-    <string name="summaryIndy">In 1935, Indiana Jones arrives in India, still part of the British Empire, and is asked to find a mystical stone. He then stumbles upon a secret cult committing enslavement and human sacrifices in the catacombs of an ancient palace</string>
-    <string name="summaryAvengers">Earth\'s mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.</string>
-    <string name="summaryCaptain">Steve Rogers, a rejected military soldier, transforms into Captain America after taking a dose of a \"Super-Soldier serum\". But being Captain America comes at a price as he attempts to take down a war monger and a terrorist organization.</string>
-    <string name="summaryWonder">When a pilot crashes and tells of conflict in the outside world, Diana, an Amazonian warrior in training, leaves home to fight a war, discovering her full powers and true destiny.</string>
-    <string name="summaryEmpire">After the Rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued by Darth Vader and a bounty hunter named Boba Fett all over the galaxy.</string>
-    <string name="starsTerminator">Arnold Schwarzenegger, Linda Hamilton, Michael Biehn</string>
-    <string name="starsGoT">Emilia Clarke, Peter Dinklage, Kit Harington</string>
-    <string name="starsStrangerThings">Millie Bobby Brown, Finn Wolfhard, Winona Ryder</string>
-    <string name="starsBackFuture">Michael J. Fox, Christopher Lloyd, Lea Thompson</string>
-    <string name="starsReturnKing">Elijah Wood, Viggo Mortensen, Ian McKellen</string>
-    <string name="starsEmpire">Mark Hamill, Harrison Ford, Carrie Fisher</string>
-    <string name="starsAvengers">Robert Downey Jr., Chris Evans, Scarlett Johansson</string>
-    <string name="starsCaptain">Chris Evans, Hugo Weaving, Samuel L. Jackson</string>
-    <string name="starsWonder">Gal Gadot, Chris Pine, Robin Wright</string>
-    <string name="starsIndy">Harrison Ford, Kate Capshaw, Ke Huy Quan</string>
     <string name="movie_detail">Image of a movie detail</string>
     <string name="summary">SUMMARY</string>
     <string name="title">MOVIE TITLE</string>
