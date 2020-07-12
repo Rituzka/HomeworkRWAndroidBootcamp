@@ -7,7 +7,7 @@ class NetworkStatusChecker(private val connectivityManager: ConnectivityManager?
 
     inline fun performIfConnectedToInternet(action: () -> Unit) {
         if(hasInternetConnection()) {
-
+          action()
         }
     }
 

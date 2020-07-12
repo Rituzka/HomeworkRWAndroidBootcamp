@@ -16,12 +16,11 @@
         android:layout_height="wrap_content"
         app:titleTextColor="@android:color/white"/>
 
-    <fragment
-        android:id="@+id/list_fragment_pokemon"
-        android:name="com.e.thepokemons.ui.fragments.PokemonFragmentList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/pokemon_recyclerview"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 
 </LinearLayout>

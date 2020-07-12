@@ -9,7 +9,7 @@ import retrofit2.http.GET
 interface RemoteApiService {
 
     @GET("pokedex.json")
-    fun getListPokemon(): Call<GetPokemonsResponse>
+    suspend fun getListPokemon(): GetPokemonsResponse
 
     @GET("/pokemon/id")
     fun getPokemonById(pokemonId: Int): Pokemon
