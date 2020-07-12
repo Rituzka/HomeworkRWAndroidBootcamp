@@ -12,6 +12,7 @@ import com.e.thepokemons.common.ItemDecoration
 import com.e.thepokemons.model.Pokemon
 import com.e.thepokemons.model.response.Success
 import com.e.thepokemons.networking.NetworkStatusChecker
+import com.e.thepokemons.repository.PokemonRepo
 import com.e.thepokemons.ui.adapter.PokemonAdapter
 import kotlinx.android.synthetic.main.activity_pokemon_list.*
 import kotlinx.coroutines.Dispatchers
@@ -22,6 +23,7 @@ class PokemonListActivity : AppCompatActivity() {
 
     private val adapter by lazy { PokemonAdapter() }
     private val remoteApi = App.remoteApi
+    private val pokemonRepo by lazy {PokemonRepo()}
     private val networkStatusChecker by lazy {
         NetworkStatusChecker(this.getSystemService(ConnectivityManager::class.java))
     }
@@ -47,6 +49,7 @@ class PokemonListActivity : AppCompatActivity() {
             val result = remoteApi.getPokemons()
                 if (result is Success) {
                     onDataReceived(result.data)
+                    pokemonRepo.storePokemonsIfNotEmpty(result.data)
                 } else {
                     onGetDataFailed()
                 }
