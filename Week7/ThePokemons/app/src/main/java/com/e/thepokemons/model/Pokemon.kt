@@ -3,7 +3,7 @@ package com.e.thepokemons.model
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Pokemon(
+class Pokemon(
     val id: Int? = 0,
     val name: String? = null,
     val image: String? = null,
