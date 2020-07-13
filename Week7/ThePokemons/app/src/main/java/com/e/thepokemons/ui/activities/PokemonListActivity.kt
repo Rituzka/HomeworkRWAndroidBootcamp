@@ -60,9 +60,9 @@ class PokemonListActivity : AppCompatActivity() {
             this.toast("Failed to fetch pokemons!")
         }
 
-        private fun onDataReceived(pokemons: List<Pokemon>) {
+        private fun onDataReceived(pokemons: List<Pokemon>) =
             adapter.setData(pokemons)
-        }
+
 
         fun Context.toast(message: String, length: Int = Toast.LENGTH_SHORT) {
             Toast.makeText(this, message, length).show()

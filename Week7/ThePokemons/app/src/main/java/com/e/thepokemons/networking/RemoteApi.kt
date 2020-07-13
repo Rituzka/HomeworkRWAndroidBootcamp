@@ -6,7 +6,7 @@ import com.e.thepokemons.model.response.Result
 import com.e.thepokemons.model.response.Success
 
 
-const val BASE_URL = "https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/"
+const val BASE_URL = "https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master"
 
 class RemoteApi(private val apiService: RemoteApiService) {
 
