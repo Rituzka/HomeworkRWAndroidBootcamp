@@ -1,6 +1,7 @@
-package com.e.blockbusterrecycler.model
+package com.e.blockbusterrecycler.repository
 
 import com.e.blockbusterrecycler.R
+import com.e.blockbusterrecycler.model.Movie
 
 
 object DummyMovieRepo {

@@ -8,7 +8,7 @@ import com.e.blockbusterrecycler.model.MovieDatabase
 
 const val DATABASE_NAME = "movie_database"
 
-class DataMovieApplication: Application() {
+class App: Application() {
 
     companion object {
        lateinit var database : MovieDatabase
@@ -16,7 +16,7 @@ class DataMovieApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        DataMovieApplication.database = Room.databaseBuilder( applicationContext,
+        App.database = Room.databaseBuilder( applicationContext,
         MovieDatabase::class.java, DATABASE_NAME)
             .build()
     }

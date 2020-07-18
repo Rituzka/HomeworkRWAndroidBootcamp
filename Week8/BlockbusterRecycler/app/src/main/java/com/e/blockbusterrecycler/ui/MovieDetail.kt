@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.e.blockbusterrecycler.R
 import com.e.blockbusterrecycler.model.Movie
-import com.e.blockbusterrecycler.model.MovieRoomRepo
 import kotlinx.android.synthetic.main.movie_detail.*
 
 class MovieDetail : AppCompatActivity() {

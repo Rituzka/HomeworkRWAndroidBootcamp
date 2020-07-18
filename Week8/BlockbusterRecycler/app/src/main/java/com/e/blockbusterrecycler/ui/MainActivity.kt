@@ -11,8 +11,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.e.blockbusterrecycler.R
 import com.e.blockbusterrecycler.model.Movie
-import com.e.blockbusterrecycler.model.DummyMovieRepo
-import com.e.blockbusterrecycler.model.MovieRoomRepo
+import com.e.blockbusterrecycler.repository.DummyMovieRepo
+import com.e.blockbusterrecycler.repository.MovieRoomRepo
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
