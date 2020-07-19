@@ -1,18 +1,18 @@
 package com.e.blockbusterrecycler.repository
 
 
-import com.e.blockbusterrecycler.app.DataMovieApplication
-import com.e.blockbusterrecycler.model.Movie
+import com.e.blockbusterrecycler.app.App
+import com.e.blockbusterrecycler.networking.MovieModelApi
 
 
 class MovieRoomRepo {
 
-    private val movieDao = DataMovieApplication.database.movieDao()
+    private val movieDao = App.database.movieDao()
 
-    suspend fun getAllMovies():List<Movie> = movieDao.findAllMovies()
-    suspend fun getMovieById(movieId: Int?)= movieDao.findMovieById(movieId)
-    suspend fun storeMovies(movies: List<Movie>)= movieDao.insertMovies(movies)
-    suspend fun storeMoviesIfNotEmpty(movies: List<Movie>){
+    suspend fun getAllMovies():List<MovieModelApi> = movieDao.findAllMovies()
+    suspend fun getMovieById(movieId: String)= movieDao.findMovieById(movieId)
+    suspend fun storeMovies(movies: List<MovieModelApi>)= movieDao.insertMovies(movies)
+    suspend fun storeMoviesIfNotEmpty(movies: List<MovieModelApi>){
         if(getAllMovies().count() < 1) storeMovies(movies)
     }
 }

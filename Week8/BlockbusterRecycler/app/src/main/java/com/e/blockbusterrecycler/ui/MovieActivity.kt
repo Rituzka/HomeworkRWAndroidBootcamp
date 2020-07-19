@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.e.blockbusterrecycler.R
 import com.e.blockbusterrecycler.app.App
 import com.e.blockbusterrecycler.model.Movie
+import com.e.blockbusterrecycler.model.Success
+import com.e.blockbusterrecycler.networking.MovieModelApi
 import com.e.blockbusterrecycler.networking.NetworkStatusChecker
 import com.e.blockbusterrecycler.repository.DummyMovieRepo
 import com.e.blockbusterrecycler.repository.MovieRoomRepo
@@ -36,7 +38,10 @@ class MovieActivity : AppCompatActivity(),
         setContentView(R.layout.activity_main)
 
         lifecycleScope.launch(Dispatchers.Main) {
-            movieRepository.storeMoviesIfNotEmpty(DummyMovieRepo.movieList)
+            val result = remoteApi.getMovies()
+            if(result is Success) {
+                movieRepository.storeMoviesIfNotEmpty(result.data)
+            }
         }
             movieRecycler.layoutManager = GridLayoutManager(this, 3)
           lifecycleScope.launch(Dispatchers.Main) {
@@ -61,14 +66,33 @@ class MovieActivity : AppCompatActivity(),
         return true
     }
 
-    fun showMovieDetail(list: Movie){
+    fun showMovieDetail(list: MovieModelApi){
         val itemMovie = Intent(this, MovieDetail::class.java)
         itemMovie.putExtra(KEY_LIST,list)
         startActivity(itemMovie)
     }
 
-    override fun listItemClicked(list: Movie) {
+    override fun listItemClicked(list: MovieModelApi) {
         showMovieDetail(list)
+    }
+
+    private fun getAllMovies() {
+        networkStatusChecker.performIfConnectedToInternet {
+            lifecycleScope.launch(Dispatchers.Main) {
+                val result = remoteApi.getMovies()
+                if(result is Success){
+                   onMovieListReceived(result.data)
+                }
+            }
+        }
+    }
+
+    private fun onMovieListReceived(movies: List<MovieModelApi>){
+        onMoviesReceived(movies)
+    }
+
+    private fun onMoviesReceived(movies: List<MovieModelApi>) {
+       movieRecycler.adapter = MovieListAdapter(movies, this)
     }
 
     fun goToLogin(){

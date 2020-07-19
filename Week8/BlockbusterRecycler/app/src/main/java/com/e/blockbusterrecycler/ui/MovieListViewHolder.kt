@@ -6,15 +6,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.e.blockbusterrecycler.R
 import com.e.blockbusterrecycler.model.Movie
+import com.e.blockbusterrecycler.networking.MovieModelApi
+import kotlinx.android.synthetic.main.movie_list_view_holder.view.*
 
 
 class MovieListViewHolder(view: View): RecyclerView.ViewHolder(view) {
+    
+    fun bindView(data: MovieModelApi){
 
-    private val movieImage = itemView.findViewById<ImageView>(R.id.imageMovie)
-    private val movieTitle = itemView.findViewById<TextView>(R.id.movieTitle)
-
-    fun bindView(image: Movie){
-        movieImage.setImageResource(image.poster)
-        movieTitle.text = image.title
+        movieImage.
+        movieTitle.text = data.title
     }
 }

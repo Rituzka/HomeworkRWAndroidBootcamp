@@ -1,32 +1,22 @@
 package com.e.blockbusterrecycler.networking
 
-import com.e.blockbusterrecycler.networking.response.MovieResponseData
-import com.google.gson.Gson
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.lang.NullPointerException
+import com.e.blockbusterrecycler.model.Failure
+import com.e.blockbusterrecycler.model.Result
+import com.e.blockbusterrecycler.model.Success
+
 
 const val BASE_URL = "http://www.omdbapi.com"
 
 class RemoteApi(private val remoteApiService: RemoteApiService) {
-    private val gson =  Gson()
 
-    fun getMovies(movies: List<MovieResponseData>){
-        remoteApiService.getMovies().enqueue(object : Callback<ResponseBody> {
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
 
-            }
+   suspend fun getMovies(): Result<List<MovieModelApi>> = try {
+        val data = remoteApiService.getMovies()
+       Success(data.movies)
 
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                val jsonBody = response.body()?.string()
+    }catch (error: Throwable) {
+        Failure(error)
+    }
 
-                if (jsonBody == null) {
-                    NullPointerException("No data available")
-                    return
-                }
-            }
-        }
 
 }
