@@ -57,6 +57,8 @@ dependencies {
     //glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
+    //workManager
+    implementation "android.arch.work:work-runtime:1.0.1"
     //test
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
