@@ -2,6 +2,7 @@ package com.e.blockbusterrecycler.ui
 
 import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -10,7 +11,9 @@ import android.view.MenuItem
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.e.blockbusterrecycler.R
+import com.e.blockbusterrecycler.app.App
 import com.e.blockbusterrecycler.model.Movie
+import com.e.blockbusterrecycler.networking.NetworkStatusChecker
 import com.e.blockbusterrecycler.repository.DummyMovieRepo
 import com.e.blockbusterrecycler.repository.MovieRoomRepo
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,10 +22,14 @@ import kotlinx.coroutines.launch
 
 const val KEY_LIST = "list"
 
-class MainActivity : AppCompatActivity(),
+class MovieActivity : AppCompatActivity(),
     MovieListAdapter.MovieItemClicked {
 
     private val movieRepository by lazy { MovieRoomRepo() }
+    private val remoteApi = App.remoteApi
+    private val networkStatusChecker by lazy {
+        NetworkStatusChecker(this.getSystemService(ConnectivityManager::class.java))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +43,7 @@ class MainActivity : AppCompatActivity(),
               movieRecycler.adapter =
                   MovieListAdapter(
                       movieRepository.getAllMovies(),
-                      this@MainActivity
+                      this@MovieActivity
                   )
           }
     }

@@ -2,7 +2,7 @@ package com.e.blockbusterrecycler.networking
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieResponse(
+data class MovieModelApi(
 
     @SerializedName("Title") val title : String,
     @SerializedName("Year") val year : Int,
