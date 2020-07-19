@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.movie_list_view_holder.view.*
 
 
 class MovieListViewHolder(view: View): RecyclerView.ViewHolder(view) {
-    
+
     fun bindView(data: MovieModelApi){
 
         movieImage.
