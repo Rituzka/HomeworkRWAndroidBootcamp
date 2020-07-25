@@ -40,22 +40,26 @@ class MovieActivity(movieApiService: RemoteApiService) : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        synchronization()
-
         lifecycleScope.launch(Dispatchers.Main) {
+            initList()
+        }
+        synchronization()
+    }
+
+    private suspend fun initList(){
+        networkStatusChecker.performIfConnectedToInternet {
             val result = remoteApi.getMovies()
-            if(result is Success) {
-                (result.data)
+            if (result is Success) {
+                onMovieListReceived(result.data)
             }
         }
-            movieRecycler.layoutManager = GridLayoutManager(this, 3)
-          lifecycleScope.launch(Dispatchers.Main) {
-              movieRecycler.adapter =
-                  MovieListAdapter(
-                     movieRepository.getAllMovies(),
-                      this@MovieActivity
-                  )
-          }
+        movieRecycler.layoutManager = GridLayoutManager(this, 3)
+            movieRecycler.adapter =
+                MovieListAdapter(
+                 movieRepository.getAllMovies(),
+                    this@MovieActivity
+                )
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -79,18 +83,6 @@ class MovieActivity(movieApiService: RemoteApiService) : AppCompatActivity(),
 
     override fun listItemClicked(list: MovieModelApi) {
         showMovieDetail(list)
-    }
-
-
-    private fun getAllMovies() {
-        networkStatusChecker.performIfConnectedToInternet {
-            lifecycleScope.launch(Dispatchers.Main) {
-                val result = remoteApi.getMovies()
-                if(result is Success){
-                   onMovieListReceived(result.data)
-                }
-            }
-        }
     }
 
     private fun synchronization() {
