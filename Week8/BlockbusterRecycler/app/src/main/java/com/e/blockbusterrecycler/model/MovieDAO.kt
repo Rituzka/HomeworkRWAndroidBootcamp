@@ -16,6 +16,6 @@ interface MovieDAO {
     @Query("SELECT * FROM movies WHERE id = :movieId")
     suspend fun findMovieById(movieId: String): MovieModelApi
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMovie(movie: MovieModelApi)
+    @Query("DELETE * FROM movies")
+    suspend fun clearAllMovies()
 }

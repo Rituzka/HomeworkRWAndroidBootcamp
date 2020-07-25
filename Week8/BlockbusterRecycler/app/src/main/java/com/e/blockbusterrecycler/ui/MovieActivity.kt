@@ -10,24 +10,27 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.work.*
 import com.e.blockbusterrecycler.R
 import com.e.blockbusterrecycler.app.App
-import com.e.blockbusterrecycler.model.Movie
 import com.e.blockbusterrecycler.model.Success
 import com.e.blockbusterrecycler.networking.MovieModelApi
 import com.e.blockbusterrecycler.networking.NetworkStatusChecker
-import com.e.blockbusterrecycler.repository.DummyMovieRepo
+import com.e.blockbusterrecycler.networking.RemoteApiService
 import com.e.blockbusterrecycler.repository.MovieRoomRepo
+import com.e.blockbusterrecycler.worker.SynchronizedWorker
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.concurrent.TimeUnit
+
 
 const val KEY_LIST = "list"
 
-class MovieActivity : AppCompatActivity(),
+class MovieActivity(movieApiService: RemoteApiService) : AppCompatActivity(),
     MovieListAdapter.MovieItemClicked {
 
-    private val movieRepository by lazy { MovieRoomRepo() }
+    private val movieRepository by lazy { MovieRoomRepo(movieApiService) }
     private val remoteApi = App.remoteApi
     private val networkStatusChecker by lazy {
         NetworkStatusChecker(this.getSystemService(ConnectivityManager::class.java))
@@ -37,17 +40,19 @@ class MovieActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        synchronization()
+
         lifecycleScope.launch(Dispatchers.Main) {
             val result = remoteApi.getMovies()
             if(result is Success) {
-                movieRepository.storeMoviesIfNotEmpty(result.data)
+                (result.data)
             }
         }
             movieRecycler.layoutManager = GridLayoutManager(this, 3)
           lifecycleScope.launch(Dispatchers.Main) {
               movieRecycler.adapter =
                   MovieListAdapter(
-                      movieRepository.getAllMovies(),
+                     movieRepository.getAllMovies(),
                       this@MovieActivity
                   )
           }
@@ -76,6 +81,7 @@ class MovieActivity : AppCompatActivity(),
         showMovieDetail(list)
     }
 
+
     private fun getAllMovies() {
         networkStatusChecker.performIfConnectedToInternet {
             lifecycleScope.launch(Dispatchers.Main) {
@@ -85,6 +91,33 @@ class MovieActivity : AppCompatActivity(),
                 }
             }
         }
+    }
+
+    private fun synchronization() {
+        val constraints = buildConstraints()
+        val worker = buildWorker(constraints)
+
+        val workManager = WorkManager.getInstance(this)
+        workManager.enqueueUniquePeriodicWork(
+            SynchronizedWorker.WORKER_ID,
+            ExistingPeriodicWorkPolicy.KEEP,
+            worker
+        )
+    }
+
+    private fun buildConstraints(): Constraints {
+        return Constraints.Builder()
+            .setRequiresBatteryNotLow(true)
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .setRequiresBatteryNotLow(true)
+            .build()
+
+    }
+
+    private fun buildWorker(constraints: Constraints): PeriodicWorkRequest {
+        return PeriodicWorkRequestBuilder<SynchronizedWorker>(15, TimeUnit.MINUTES)
+            .setConstraints(constraints)
+            .build()
     }
 
     private fun onMovieListReceived(movies: List<MovieModelApi>){

@@ -64,7 +64,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     }
     //function to access Main activity
     private fun goToListMovies() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, MovieActivity::class.java)
         startActivity(intent)
     }
 }
