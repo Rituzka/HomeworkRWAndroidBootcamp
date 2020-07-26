@@ -2,44 +2,41 @@ package com.e.blockbusterrecycler.ui
 
 import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.work.*
 import com.e.blockbusterrecycler.R
-import com.e.blockbusterrecycler.app.App
-import com.e.blockbusterrecycler.model.Success
 import com.e.blockbusterrecycler.networking.MovieModelApi
-import com.e.blockbusterrecycler.networking.NetworkStatusChecker
-import com.e.blockbusterrecycler.networking.buildApiService
-import com.e.blockbusterrecycler.repository.MovieRoomRepo
+import com.e.blockbusterrecycler.viewModel.MoviesViewModel
 import com.e.blockbusterrecycler.worker.SynchronizedWorker
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
-
+import androidx.lifecycle.ViewModelProviders
 
 const val KEY_LIST = "list"
 
-class MovieActivity() : AppCompatActivity(),
+@Suppress("DEPRECATION")
+class MovieActivity : AppCompatActivity(),
     MovieListAdapter.MovieItemClicked {
 
-    private val movieApiService by lazy { buildApiService() }
-    private val movieRepository by lazy { MovieRoomRepo(movieApiService) }
-    private val remoteApi = App.remoteApi
-    private val networkStatusChecker by lazy {
-        NetworkStatusChecker(this.getSystemService(ConnectivityManager::class.java))
-    }
+    private val movieAdapter by lazy { MovieListAdapter(this) }
+
+    private lateinit var moviesViewModel: MoviesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
+        moviesViewModel.fetchMovies()
 
         lifecycleScope.launch(Dispatchers.Main) {
             initList()
@@ -47,20 +44,16 @@ class MovieActivity() : AppCompatActivity(),
         synchronization()
     }
 
-    private suspend fun initList(){
-        networkStatusChecker.performIfConnectedToInternet {
-            val result = remoteApi.getMovies()
-            if (result is Success) {
-                onMovieListReceived(result.data)
-            }
-        }
-        movieRecycler.layoutManager = GridLayoutManager(this, 3)
-            movieRecycler.adapter =
-                MovieListAdapter(
-                 movieRepository.getAllMovies(),
-                    this@MovieActivity
-                )
+    private fun initList(){
 
+        movieRecycler.layoutManager = GridLayoutManager(this, 3)
+        movieRecycler.adapter = movieAdapter
+
+        moviesViewModel.getMoviesLiveData().observe(this, Observer {data ->
+            if(data != null){
+                movieAdapter.setMovies(data)
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -73,10 +66,11 @@ class MovieActivity() : AppCompatActivity(),
         val sharedPref = getSharedPreferences(getString(R.string.saveData), Context.MODE_PRIVATE)
         sharedPref.edit().putBoolean(getString(R.string.userlogged),false).apply()
         goToLogin()
+        stopSynchronization()
         return true
     }
 
-    fun showMovieDetail(list: MovieModelApi){
+    private fun showMovieDetail(list: MovieModelApi){
         val itemMovie = Intent(this, MovieDetail::class.java)
         itemMovie.putExtra(KEY_LIST,list)
         startActivity(itemMovie)
@@ -98,6 +92,12 @@ class MovieActivity() : AppCompatActivity(),
         )
     }
 
+    private fun stopSynchronization() {
+        val workManager = WorkManager.getInstance(this)
+
+        workManager.cancelUniqueWork(SynchronizedWorker.WORKER_ID)
+    }
+
     private fun buildConstraints(): Constraints {
         return Constraints.Builder()
             .setRequiresBatteryNotLow(true)
@@ -113,15 +113,8 @@ class MovieActivity() : AppCompatActivity(),
             .build()
     }
 
-    private fun onMovieListReceived(movies: List<MovieModelApi>){
-        onMoviesReceived(movies)
-    }
 
-    private fun onMoviesReceived(movies: List<MovieModelApi>) {
-       movieRecycler.adapter = MovieListAdapter(movies, this)
-    }
-
-    fun goToLogin(){
+    private fun goToLogin(){
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }
