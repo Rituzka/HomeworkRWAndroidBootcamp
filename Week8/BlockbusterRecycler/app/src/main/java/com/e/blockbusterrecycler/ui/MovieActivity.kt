@@ -16,7 +16,7 @@ import com.e.blockbusterrecycler.app.App
 import com.e.blockbusterrecycler.model.Success
 import com.e.blockbusterrecycler.networking.MovieModelApi
 import com.e.blockbusterrecycler.networking.NetworkStatusChecker
-import com.e.blockbusterrecycler.networking.RemoteApiService
+import com.e.blockbusterrecycler.networking.buildApiService
 import com.e.blockbusterrecycler.repository.MovieRoomRepo
 import com.e.blockbusterrecycler.worker.SynchronizedWorker
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,9 +27,10 @@ import java.util.concurrent.TimeUnit
 
 const val KEY_LIST = "list"
 
-class MovieActivity(movieApiService: RemoteApiService) : AppCompatActivity(),
+class MovieActivity() : AppCompatActivity(),
     MovieListAdapter.MovieItemClicked {
 
+    private val movieApiService by lazy { buildApiService() }
     private val movieRepository by lazy { MovieRoomRepo(movieApiService) }
     private val remoteApi = App.remoteApi
     private val networkStatusChecker by lazy {

@@ -1,6 +1,6 @@
 package com.e.blockbusterrecycler.model.response
 
-import com.e.blockbusterrecycler.model.Movie
+
 import com.e.blockbusterrecycler.networking.MovieModelApi
 import com.google.gson.annotations.SerializedName
 

@@ -1,14 +1,12 @@
 package com.e.blockbusterrecycler.app
 
 import android.app.Application
-import android.content.Context
 import androidx.room.Room
-import androidx.room.Room.databaseBuilder
 import com.e.blockbusterrecycler.model.MovieDatabase
 import com.e.blockbusterrecycler.networking.RemoteApi
 import com.e.blockbusterrecycler.networking.buildApiService
 
-const val DATABASE_NAME = "movie_database"
+const val DATABASE_NAME = "moviesData"
 
 class App: Application() {
 

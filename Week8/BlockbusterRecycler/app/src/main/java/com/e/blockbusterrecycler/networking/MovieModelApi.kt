@@ -17,7 +17,7 @@ data class MovieModelApi(
     @SerializedName("Actors") val actors : String?,
     @SerializedName("Poster") val poster : String?,
     @PrimaryKey
-    @SerializedName("imdbID") val id : String?,
+    @SerializedName("imdbID") val id : String,
     @SerializedName("Type") val type : String?,
     @SerializedName("Response") val response : Boolean
 
@@ -29,7 +29,7 @@ data class MovieModelApi(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readString(),
+        parcel.readString().toString(),
         parcel.readString(),
         parcel.readByte() != 0.toByte()
     ) {

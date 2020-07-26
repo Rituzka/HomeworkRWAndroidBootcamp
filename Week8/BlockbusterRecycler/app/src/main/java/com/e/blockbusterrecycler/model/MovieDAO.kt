@@ -10,12 +10,12 @@ interface MovieDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMovies(movies: List<MovieModelApi>)
 
-    @Query("SELECT * FROM movies")
+    @Query("SELECT * FROM moviesData")
     suspend fun findAllMovies(): List<MovieModelApi>
 
-    @Query("SELECT * FROM movies WHERE id = :movieId")
+    @Query("SELECT * FROM moviesData WHERE id = :movieId")
     suspend fun findMovieById(movieId: String): MovieModelApi
 
-    @Query("DELETE * FROM movies")
+    @Query("DELETE FROM moviesData")
     suspend fun clearAllMovies()
 }

@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.e.blockbusterrecycler.R
-import com.e.blockbusterrecycler.model.Movie
 import com.e.blockbusterrecycler.networking.MovieModelApi
 
 
