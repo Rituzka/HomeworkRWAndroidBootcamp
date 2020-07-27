@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.e.blockbusterrecycler.model.MovieDatabase
 import com.e.blockbusterrecycler.networking.RemoteApi
 import com.e.blockbusterrecycler.networking.buildApiService
+import com.e.blockbusterrecycler.repository.MovieRoomRepo
 
 const val DATABASE_NAME = "moviesData"
 

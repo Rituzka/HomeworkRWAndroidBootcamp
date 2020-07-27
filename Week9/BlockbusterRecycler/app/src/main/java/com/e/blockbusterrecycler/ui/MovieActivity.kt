@@ -38,14 +38,11 @@ class MovieActivity : AppCompatActivity(),
         moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
         moviesViewModel.fetchMovies()
 
-        lifecycleScope.launch(Dispatchers.Main) {
-            initList()
-        }
+        initListMovies()
         synchronization()
     }
 
-    private fun initList(){
-
+    private fun initListMovies(){
         movieRecycler.layoutManager = GridLayoutManager(this, 3)
         movieRecycler.adapter = movieAdapter
 
