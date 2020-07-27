@@ -18,4 +18,7 @@ interface MovieDAO {
 
     @Query("DELETE FROM moviesData")
     suspend fun clearAllMovies()
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertMovie(movie: MovieModelApi)
 }

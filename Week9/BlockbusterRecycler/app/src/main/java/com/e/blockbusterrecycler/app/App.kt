@@ -12,11 +12,12 @@ const val DATABASE_NAME = "moviesData"
 class App: Application() {
 
     companion object {
-
-       lateinit var database:  MovieDatabase
+        private lateinit var instance: App
+        lateinit var database:  MovieDatabase
         private val apiService by lazy { buildApiService()}
         val remoteApi by lazy { RemoteApi(apiService) }
 
+        fun getAppContext() = instance
 
     }
 
