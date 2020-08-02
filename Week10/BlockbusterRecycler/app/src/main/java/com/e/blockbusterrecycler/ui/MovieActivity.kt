@@ -2,12 +2,13 @@ package com.e.blockbusterrecycler.ui
 
 import android.content.Context
 import android.content.Intent
-import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.work.*
@@ -17,18 +18,16 @@ import com.e.blockbusterrecycler.viewModel.MoviesViewModel
 import com.e.blockbusterrecycler.worker.SynchronizedWorker
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
-import androidx.lifecycle.ViewModelProviders
 import com.e.blockbusterrecycler.utils.Status
 import org.koin.android.viewmodel.ext.android.viewModel
 
 const val KEY_LIST = "list"
 
-@Suppress("DEPRECATION")
+
 class MovieActivity : AppCompatActivity(),
     MovieListAdapter.MovieItemClicked {
 
-    private val movieAdapter by lazy { MovieListAdapter(this) }
-
+    private lateinit var movieAdapter: MovieListAdapter
     private val moviesViewModel: MoviesViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,19 +41,30 @@ class MovieActivity : AppCompatActivity(),
 
     private fun setupUI(){
         movieRecycler.layoutManager = GridLayoutManager(this, 3)
+        movieAdapter = MovieListAdapter(arrayListOf())
+
         movieRecycler.adapter = movieAdapter
 
     }
 
     private fun setupObserver() {
         moviesViewModel.movies.observe(this, Observer {
-            when(it.status) {
+            when (it.status) {
                 Status.SUCCESS -> {
                     progressBar.visibility = View.GONE
+                    it.data?.let { movies -> renderList(movies) }
+                    movieRecycler.visibility = View.VISIBLE
+                }
+                Status.LOADING -> {
+                    progressBar.visibility = View.VISIBLE
+                    movieRecycler.visibility = View.GONE
+                }
+                Status.ERROR -> {
+                    progressBar.visibility = View.GONE
+                    Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                 }
             }
         })
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -112,6 +122,11 @@ class MovieActivity : AppCompatActivity(),
         return PeriodicWorkRequestBuilder<SynchronizedWorker>(15, TimeUnit.MINUTES)
             .setConstraints(constraints)
             .build()
+    }
+
+    private fun renderList(movies: List<MovieModelApi>) {
+        movieAdapter.setMovies(movies)
+        movieAdapter.notifyDataSetChanged()
     }
 
 

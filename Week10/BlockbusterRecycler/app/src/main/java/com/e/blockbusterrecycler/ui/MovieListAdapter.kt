@@ -9,10 +9,10 @@ import com.e.blockbusterrecycler.networking.MovieModelApi
 
 
 class MovieListAdapter(
-   private val clickListener: MovieItemClicked
+    private val movies: ArrayList<MovieModelApi>,
+    private val clickListener: MovieItemClicked
 ): RecyclerView.Adapter<MovieListViewHolder>() {
 
-    private val movies = mutableListOf<MovieModelApi>()
 
     interface MovieItemClicked {
         fun listItemClicked(list: MovieModelApi)
