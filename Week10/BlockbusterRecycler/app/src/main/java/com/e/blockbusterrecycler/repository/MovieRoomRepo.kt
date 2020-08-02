@@ -3,12 +3,11 @@ package com.e.blockbusterrecycler.repository
 
 import androidx.lifecycle.LiveData
 import com.e.blockbusterrecycler.app.App
+import com.e.blockbusterrecycler.networking.ApiHelper
 import com.e.blockbusterrecycler.networking.MovieModelApi
-import com.e.blockbusterrecycler.networking.RemoteApiService
-import com.e.blockbusterrecycler.networking.getMoviesQuery
 
 
-open class MovieRoomRepo(private val movieApiService: RemoteApiService): MovieRepository{
+open class MovieRoomRepo(private val apiHelper: ApiHelper): MovieRepository{
 
 
     private val movieDao = App.database.movieDao()
@@ -20,12 +19,14 @@ open class MovieRoomRepo(private val movieApiService: RemoteApiService): MovieRe
 
     suspend fun storeMovies(movies: List<MovieModelApi>)= movieDao.insertMovies(movies)
 
+    suspend fun getMovies() = apiHelper.getMovies()
+
     suspend fun storeMoviesIfNotEmpty(movies: List<MovieModelApi>){
         if(movies.isNotEmpty()) movieDao.insertMovies(movies)
     }
 
      override suspend fun loadMoviesForPage(page: Int) {
-        val movieList = movieApiService.getBestMovies(getMoviesQuery(page))
+        val movieList = apiHelper.getMovies()
         storeMoviesIfNotEmpty(movieList.movies)
     }
 

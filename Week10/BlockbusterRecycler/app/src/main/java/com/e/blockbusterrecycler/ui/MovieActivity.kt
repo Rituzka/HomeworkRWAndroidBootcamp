@@ -2,13 +2,13 @@ package com.e.blockbusterrecycler.ui
 
 import android.content.Context
 import android.content.Intent
+import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.work.*
 import com.e.blockbusterrecycler.R
@@ -16,10 +16,10 @@ import com.e.blockbusterrecycler.networking.MovieModelApi
 import com.e.blockbusterrecycler.viewModel.MoviesViewModel
 import com.e.blockbusterrecycler.worker.SynchronizedWorker
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 import androidx.lifecycle.ViewModelProviders
+import com.e.blockbusterrecycler.utils.Status
+import org.koin.android.viewmodel.ext.android.viewModel
 
 const val KEY_LIST = "list"
 
@@ -29,28 +29,32 @@ class MovieActivity : AppCompatActivity(),
 
     private val movieAdapter by lazy { MovieListAdapter(this) }
 
-    private lateinit var moviesViewModel: MoviesViewModel
+    private val moviesViewModel: MoviesViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        moviesViewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
-        moviesViewModel.fetchMovies()
-
-        initListMovies()
+        setupUI()
+        setupObserver()
         synchronization()
     }
 
-    private fun initListMovies(){
+    private fun setupUI(){
         movieRecycler.layoutManager = GridLayoutManager(this, 3)
         movieRecycler.adapter = movieAdapter
 
-        moviesViewModel.getMoviesLiveData().observe(this, Observer {data ->
-            if(data != null){
-                movieAdapter.setMovies(data)
+    }
+
+    private fun setupObserver() {
+        moviesViewModel.movies.observe(this, Observer {
+            when(it.status) {
+                Status.SUCCESS -> {
+                    progressBar.visibility = View.GONE
+                }
             }
         })
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

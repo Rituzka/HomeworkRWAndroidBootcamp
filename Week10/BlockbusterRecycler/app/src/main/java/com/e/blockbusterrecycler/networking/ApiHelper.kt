@@ -1,8 +1,9 @@
 package com.e.blockbusterrecycler.networking
 
-import com.e.blockbusterrecycler.model.response.GetMoviesResponse
+
+import retrofit2.Response
 
 interface ApiHelper {
 
-    suspend fun getMovies(): GetMoviesResponse
+    suspend fun getMovies(): Response <List<MovieModelApi>>
 }

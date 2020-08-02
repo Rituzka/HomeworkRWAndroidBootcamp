@@ -1,15 +1,26 @@
 package com.e.blockbusterrecycler.di.module
 
 import android.content.Context
-import com.e.blockbusterrecycler.networking.ApiHelper
-import com.e.blockbusterrecycler.networking.NetworkStatusChecker
-import com.e.blockbusterrecycler.networking.RemoteApiImpl
-import com.e.blockbusterrecycler.networking.RemoteApiService
+import com.e.blockbusterrecycler.networking.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.BuildConfig
+import org.koin.android.ext.koin.androidContext
+import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+
+
+val appModule = module {
+    single { provideOkHttpClient() }
+    single { provideRetrofit(get(), BASE_URL) }
+    single { provideApiService(get()) }
+    single { provideNetworkHelper(androidContext()) }
+
+    single<ApiHelper> {
+        return@single RemoteApiImpl(get())
+    }
+}
 
 private fun provideNetworkHelper(context: Context) = NetworkStatusChecker(context)
 
@@ -25,11 +36,11 @@ private fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
 
 private fun provideRetrofit(
     okHttpClient: OkHttpClient,
-    BASE_URL: String
-): Retrofit =
+    baseURL: String
+) =
     Retrofit.Builder()
         .addConverterFactory(MoshiConverterFactory.create())
-        .baseUrl(BASE_URL)
+        .baseUrl(baseURL)
         .client(okHttpClient)
         .build()
 
