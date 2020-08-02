@@ -8,11 +8,13 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.movie_list_view_holder.view.*
 
 
-class MovieListViewHolder(override val containerView: View): RecyclerView.ViewHolder(containerView),
-LayoutContainer{
+class MovieListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
-        fun bindView(data: MovieModelApi) = with(containerView) {
-            Glide.with(this).load(data.poster).into(imageMovie)
-            movieTitle.text = data.title
-        }
+    fun bindView(data: MovieModelApi) {
+        itemView.movieTitle.text = data.title
+        Glide.with(itemView.imageMovie.context)
+            .load(data.poster)
+            .into(itemView.imageMovie)
+
+    }
 }

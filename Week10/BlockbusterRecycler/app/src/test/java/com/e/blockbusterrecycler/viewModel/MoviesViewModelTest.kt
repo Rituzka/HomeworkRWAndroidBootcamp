@@ -1,5 +1,6 @@
 package com.e.blockbusterrecycler.viewModel
 
+import android.content.Context
 import androidx.room.Room
 import com.e.blockbusterrecycler.app.App
 import com.e.blockbusterrecycler.model.MovieDAO
@@ -15,10 +16,10 @@ class MoviesViewModelTest {
 
         private lateinit var movieDao: MovieDAO
         private lateinit var db: MovieDatabase
+        lateinit var context: Context
 
         @Before
         fun createDb() {
-            val context = App.getAppContext()
             db = Room.inMemoryDatabaseBuilder(
                 context, MovieDatabase::class.java
             ).build()

@@ -2,26 +2,29 @@ package com.e.blockbusterrecycler.app
 
 import android.app.Application
 import androidx.room.Room
+import com.e.blockbusterrecycler.di.module.appModule
+import com.e.blockbusterrecycler.di.module.repoModule
+import com.e.blockbusterrecycler.di.module.viewModelModule
 import com.e.blockbusterrecycler.model.MovieDatabase
-import com.e.blockbusterrecycler.networking.RemoteApiImpl
-import com.e.blockbusterrecycler.networking.buildApiService
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
 const val DATABASE_NAME = "moviesData"
 
 class App: Application() {
 
     companion object {
-        private lateinit var instance: App
         lateinit var database:  MovieDatabase
-        private val apiService by lazy { buildApiService()}
-        val remoteApi by lazy { RemoteApiImpl(apiService) }
-
-        fun getAppContext() = instance
-
     }
+
 
     override fun onCreate() {
         super.onCreate()
+        startKoin{
+            androidContext(this@App)
+            modules(listOf(appModule, repoModule, viewModelModule))
+        }
+
         App.database = Room.databaseBuilder( applicationContext,
         MovieDatabase::class.java, DATABASE_NAME)
             .build()

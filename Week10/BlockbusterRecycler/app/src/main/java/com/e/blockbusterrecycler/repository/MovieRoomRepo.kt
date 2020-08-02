@@ -27,7 +27,7 @@ open class MovieRoomRepo(private val apiHelper: ApiHelper): MovieRepository{
 
      override suspend fun loadMoviesForPage(page: Int) {
         val movieList = apiHelper.getMovies()
-        storeMoviesIfNotEmpty(movieList.movies)
+        //storeMoviesIfNotEmpty(movieList)
     }
 
     override suspend fun clearMovies() {

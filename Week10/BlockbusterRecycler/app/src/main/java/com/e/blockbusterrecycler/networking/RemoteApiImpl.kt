@@ -1,12 +1,13 @@
 package com.e.blockbusterrecycler.networking
 
 
-import com.e.blockbusterrecycler.model.response.GetMoviesResponse
+
+import retrofit2.Response
 
 
 class RemoteApiImpl(private val remoteApiService: RemoteApiService): ApiHelper {
 
-    override suspend fun getMovies(): GetMoviesResponse = remoteApiService.getMovies()
+    override suspend fun getMovies(): Response<List<MovieModelApi>> = remoteApiService.getMovies()
 
 
 }

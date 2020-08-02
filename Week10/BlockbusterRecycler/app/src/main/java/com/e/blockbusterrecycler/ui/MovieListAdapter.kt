@@ -18,12 +18,6 @@ class MovieListAdapter(
         fun listItemClicked(list: MovieModelApi)
     }
 
-    fun setMovies(movies: List<MovieModelApi>) {
-        this.movies.clear()
-        this.movies.addAll(movies)
-        notifyDataSetChanged()
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.movie_list_view_holder, parent, false)
@@ -40,6 +34,10 @@ class MovieListAdapter(
             clickListener.listItemClicked(movies[position])
         }
 
+    }
+
+    fun addData(list: List<MovieModelApi>){
+        movies.addAll(list)
     }
 
 }

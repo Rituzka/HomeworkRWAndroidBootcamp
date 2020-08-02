@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.work.*
 import com.e.blockbusterrecycler.R
 import com.e.blockbusterrecycler.networking.MovieModelApi
+import com.e.blockbusterrecycler.ui.MovieListAdapter.MovieItemClicked
 import com.e.blockbusterrecycler.viewModel.MoviesViewModel
 import com.e.blockbusterrecycler.worker.SynchronizedWorker
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,7 +26,7 @@ const val KEY_LIST = "list"
 
 
 class MovieActivity : AppCompatActivity(),
-    MovieListAdapter.MovieItemClicked {
+    MovieItemClicked {
 
     private lateinit var movieAdapter: MovieListAdapter
     private val moviesViewModel: MoviesViewModel by viewModel()
@@ -41,8 +42,6 @@ class MovieActivity : AppCompatActivity(),
 
     private fun setupUI(){
         movieRecycler.layoutManager = GridLayoutManager(this, 3)
-        movieAdapter = MovieListAdapter(arrayListOf())
-
         movieRecycler.adapter = movieAdapter
 
     }
@@ -125,7 +124,7 @@ class MovieActivity : AppCompatActivity(),
     }
 
     private fun renderList(movies: List<MovieModelApi>) {
-        movieAdapter.setMovies(movies)
+        movieAdapter.addData(movies)
         movieAdapter.notifyDataSetChanged()
     }
 
