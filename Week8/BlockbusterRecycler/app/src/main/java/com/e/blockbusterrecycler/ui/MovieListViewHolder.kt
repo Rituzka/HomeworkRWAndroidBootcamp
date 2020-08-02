@@ -1,20 +1,26 @@
 package com.e.blockbusterrecycler.ui
 
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.e.blockbusterrecycler.R
+import com.bumptech.glide.Glide
 import com.e.blockbusterrecycler.model.Movie
+import com.e.blockbusterrecycler.networking.MovieModelApi
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.movie_list_view_holder.view.*
 
 
-class MovieListViewHolder(view: View): RecyclerView.ViewHolder(view) {
+class MovieListViewHolder(override val containerView: View): RecyclerView.ViewHolder(containerView),
+LayoutContainer{
 
-    private val movieImage = itemView.findViewById<ImageView>(R.id.imageMovie)
-    private val movieTitle = itemView.findViewById<TextView>(R.id.movieTitle)
+    fun bindView(data: MovieModelApi) {
 
-    fun bindView(image: Movie){
-        movieImage.setImageResource(image.poster)
-        movieTitle.text = image.title
+        val movieImage = itemView.imageMovie
+        val movieTitle = itemView.movieTitle
+
+        fun bindView(data: Movie) = with(containerView) {
+            Glide.with(this).load(data.poster).into(movieImage)
+            movieTitle.text = data.title
+        }
+
     }
 }
