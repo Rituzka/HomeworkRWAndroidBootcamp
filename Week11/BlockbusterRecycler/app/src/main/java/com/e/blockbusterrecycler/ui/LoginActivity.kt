@@ -33,10 +33,9 @@ override fun onCreate(savedInstanceState: Bundle?) {
         btnLogin.startAnimation(option)
 
         if(isLoginValid()) {
-           btnLogin.startAnimation(option)
-           hideKeyboard()
-         sharedPref.edit().putBoolean(getString(R.string.userlogged),true).apply()
-           goToListMovies()
+            hideKeyboard()
+            sharedPref.edit().putBoolean(getString(R.string.userlogged),true).apply()
+            goToListMovies()
        } else
            hideKeyboard()
            showErrors()
