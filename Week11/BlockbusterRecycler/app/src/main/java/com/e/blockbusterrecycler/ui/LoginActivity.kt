@@ -1,16 +1,21 @@
 package com.e.blockbusterrecycler.ui
 
+
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.e.blockbusterrecycler.R
 import kotlinx.android.synthetic.main.activity_login.*
+import maes.tech.intentanim.CustomIntent.customType
+
 
 class LoginActivity : AppCompatActivity() {
 
+    private val animation1 = "fadein-to-fadeout"
 
 override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -24,11 +29,14 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
     //button login, after validation saves username and go to main activity
     btnLogin.setOnClickListener {
-       if(isLoginValid()) {
+     val option = AnimationUtils.loadAnimation(this, R.anim.bounce)
+        btnLogin.startAnimation(option)
+
+        if(isLoginValid()) {
+           btnLogin.startAnimation(option)
            hideKeyboard()
          sharedPref.edit().putBoolean(getString(R.string.userlogged),true).apply()
            goToListMovies()
-
        } else
            hideKeyboard()
            showErrors()
@@ -66,6 +74,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     private fun goToListMovies() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+        customType(this, animation1)
     }
 }
 
