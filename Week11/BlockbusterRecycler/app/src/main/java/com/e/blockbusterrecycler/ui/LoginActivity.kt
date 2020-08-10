@@ -1,6 +1,7 @@
 package com.e.blockbusterrecycler.ui
 
 
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -15,7 +16,6 @@ import maes.tech.intentanim.CustomIntent.customType
 
 class LoginActivity : AppCompatActivity() {
 
-    private val animation1 = "fadein-to-fadeout"
 
 override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -71,9 +71,11 @@ override fun onCreate(savedInstanceState: Bundle?) {
     }
     //function to access Main activity
     private fun goToListMovies() {
+        val animation =  ActivityOptions.makeSceneTransitionAnimation(this)
         val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        customType(this, animation1)
+        startActivity(intent, animation.toBundle())
+        finish()
+
     }
 }
 

@@ -5,10 +5,12 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.transition.Fade
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.animation.AnimationUtils
+import androidx.interpolator.view.animation.FastOutLinearInInterpolator
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.e.blockbusterrecycler.R
@@ -78,3 +80,7 @@ class MainActivity : AppCompatActivity(),
     }
 
 }
+
+
+
+
